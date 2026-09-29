@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodApp | Freshness Delivered</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Order your favorite meals from top restaurants with lightning-fast delivery and a premium experience.">
+
+    <!-- External Assets -->
+    <link rel="stylesheet" href="index.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+            <i data-lucide="utensils-crosses"></i>
+            FoodApp
+        </a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#how">How it Works</a>
+            <a href="#about">About Us</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-actions">
+            <a href="javascript:void(0)" class="btn btn-primary" onclick="openModal('login')">
+                Sign In
+                <i data-lucide="log-in" style="width:18px"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text" data-aos="fade-right">
+                <h1>Your favorite meals, <br><span class="highlight">delivered fast.</span></h1>
+                <p>Experience the finest gourmet dining at your doorstep. From local gems to top-rated restaurants, we
+                    bring the best tastes directly to you.</p>
+
+                <div class="glass search-container">
+                    <div class="search-box">
+                        <i data-lucide="map-pin" style="margin-left:15px; color:var(--primary)"></i>
+                        <input type="text" placeholder="Enter your delivery address">
+                        <button class="btn btn-primary">Find Food</button>
+                    </div>
+                </div>
+
+                <div class="chips-group" style="display:flex; gap:12px; margin-top:10px">
+                    <span class="glass" style="padding:8px 16px; font-size:0.9rem; font-weight:500">🔥 Fastest
+                        Delivery</span>
+                    <span class="glass" style="padding:8px 16px; font-size:0.9rem; font-weight:500">⭐ Top Rated</span>
+                    <span class="glass" style="padding:8px 16px; font-size:0.9rem; font-weight:500">🎁 Best
+                        Offers</span>
+                </div>
+            </div>
+
+            <div class="hero-image-container" data-aos="zoom-in" data-aos-delay="200">
+                <img src="hero.png" alt="Delicious Food Platter" class="hero-image">
+                <div class="glass floating-card" data-aos="fade-up" data-aos-delay="400">
+                    <div style="background:var(--primary); padding:10px; border-radius:12px; color:white">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <div>
+                        <p style="font-weight:700; font-size:1.1rem">20 mins</p>
+                        <p style="font-size:0.8rem; color:var(--text-muted)">Average Delivery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" style="background: white">
+        <div class="container">
+            <h2 data-aos="fade-up">How It <span class="highlight">Works</span></h2>
+            <div class="steps-grid">
+                <div class="glass step-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-icon">
+                        <i data-lucide="search"></i>
+                    </div>
+                    <h3>Choose</h3>
+                    <p>Select your favorite meals from our extensive curated menu of top-rated local restaurants.</p>
+                </div>
+                <div class="glass step-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-icon">
+                        <i data-lucide="credit-card"></i>
+                    </div>
+                    <h3>Pay</h3>
+                    <p>Experience seamless and secure payments with our state-of-the-art encrypted checkout system.</p>
+                </div>
+                <div class="glass step-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-icon">
+                        <i data-lucide="bike"></i>
+                    </div>
+                    <h3>Enjoy</h3>
+                    <p>Track your order in real-time as our dedicated fleet brings your fresh meal in minutes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container about-grid">
+            <div class="about-image-wrapper" data-aos="fade-right">
+                <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc" alt="Fresh Ingredients"
+                    class="about-img">
+            </div>
+            <div class="about-text" data-aos="fade-left">
+                <h2>Freshness <span class="highlight">Delivered</span> in 20 Minutes</h2>
+                <p>We believe that good food shouldn't be a luxury of time. Our mission is to bridge the gap between
+                    world-class kitchens and your dining table.</p>
+                <div style="margin-top:30px">
+                    <div style="display:flex; align-items:center; gap:15px; margin-bottom:15px">
+                        <i data-lucide="check-circle" style="color:var(--secondary)"></i>
+                        <p>Locally sourced fresh ingredients</p>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:15px; margin-bottom:15px">
+                        <i data-lucide="check-circle" style="color:var(--secondary)"></i>
+                        <p>Strict quality and hygiene standards</p>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:15px; margin-bottom:15px">
+                        <i data-lucide="check-circle" style="color:var(--secondary)"></i>
+                        <p>Supporting local restaurant communities</p>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary" style="margin-top:20px">Read Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners (Simplified/Visual) -->
+    <section style="background: rgba(255, 107, 53, 0.03); padding: 60px 0;">
+        <div class="container">
+            <div
+                style="display:flex; justify-content:space-between; align-items:center; opacity:0.5; filter:grayscale(1); flex-wrap:wrap; gap:30px">
+                <h3 style="font-size:1.5rem">Burgeriona</h3>
+                <h3 style="font-size:1.5rem">Pasta Pronto</h3>
+                <h3 style="font-size:1.5rem">Sushi House</h3>
+                <h3 style="font-size:1.5rem">Green Bowl</h3>
+                <h3 style="font-size:1.5rem">TacoTime</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2 data-aos="fade-up">Frequently Asked <span class="highlight">Questions</span></h2>
+            <div class="faq-container">
+                <div class="faq-item glass" data-aos="fade-up">
+                    <div class="faq-header" onclick="toggleFaq(this.parentElement)">
+                        <h3>How do I track my active order?</h3>
+                        <i data-lucide="chevron-down" class="chevron"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>You can track your order live through our interactive map in the "Active Orders" section.
+                            You'll see real-time updates from the moment the chef starts cooking until the rider reaches
+                            your door.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass" data-aos="fade-up">
+                    <div class="faq-header" onclick="toggleFaq(this.parentElement)">
+                        <h3>What are the standard delivery hours?</h3>
+                        <i data-lucide="chevron-down" class="chevron"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>Our official delivery hours are from 8:00 AM to 11:30 PM, seven days a week. However, many of
+                            our partner restaurants may have their own specific operating hours.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass" data-aos="fade-up">
+                    <div class="faq-header" onclick="toggleFaq(this.parentElement)">
+                        <h3>Do you offer contactless delivery?</h3>
+                        <i data-lucide="chevron-down" class="chevron"></i>
+                    </div>
+                    <div class="faq-content">
+                        <p>Yes, safety is our priority. You can select "Contactless Delivery" during checkout. Our
+                            riders will leave your order at the doorstep and notify you via call or message.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section (Glassified) -->
+    <section style="padding: 0;">
+        <div class="container glass" style="overflow:hidden; border-radius:30px; margin-bottom: 100px;">
+            <iframe src="https://www.google.com/maps?q=India-Delhi&output=embed" width="100%" height="450"
+                style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container contact-grid">
+            <div class="glass contact-form" data-aos="fade-right">
+                <h3>Get in <span class="highlight">Touch</span></h3>
+                <p style="margin-bottom:30px; color:var(--text-muted)">Have questions or feedback? We'd love to hear
+                    from you.</p>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Your Message</label>
+                    <textarea rows="5" placeholder="How can we help you?"></textarea>
+                </div>
+                <button class="btn btn-primary" style="width:100%; justify-content:center">
+                    Send Message
+                    <i data-lucide="send" style="width:18px"></i>
+                </button>
+            </div>
+
+            <div class="contact-info glass" style="background:var(--primary)" data-aos="fade-left">
+                <h3 style="color:white; margin-bottom:30px">Contact Information</h3>
+                <div class="info-item">
+                    <i data-lucide="phone"></i>
+                    <p>+91 90000 00000</p>
+                </div>
+                <div class="info-item">
+                    <i data-lucide="mail"></i>
+                    <p>support@foodapp.com</p>
+                </div>
+                <div class="info-item">
+                    <i data-lucide="map-pin"></i>
+                    <p>123 Gourmet St, Foodie Valley, NY</p>
+                </div>
+
+                <div style="margin-top:60px">
+                    <h4 style="margin-bottom:20px">Operating Hours</h4>
+                    <p>Mon - Sun: 8:00 AM - 11:30 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="footer-logo">
+                        <i data-lucide="utensils-crosses"></i>
+                        FoodApp
+                    </a>
+                    <p style="color:#AAA; margin-top:20px">Bringing the world's best cuisines to your doorstep with
+                        speed and elegance.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i data-lucide="instagram" style="width:18px"></i></a>
+                        <a href="#" class="social-icon"><i data-lucide="twitter" style="width:18px"></i></a>
+                        <a href="#" class="social-icon"><i data-lucide="facebook" style="width:18px"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Partner with us</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Newsletter</h4>
+                    <p style="color:#AAA; margin-bottom:15px; font-size:0.9rem">Get the tastiest updates and best offers
+                        directly in your inbox.</p>
+                    <div style="display:flex; gap:10px">
+                        <input type="email" placeholder="Email" style="background:#333; border:none; color:white">
+                        <button class="btn btn-primary" style="padding:10px"><i data-lucide="arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 FoodApp Inc. All rights reserved. Made with ❤️ for food lovers.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sign In Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="glass modal-content">
+            <i data-lucide="x" class="close-modal" onclick="closeModal()"></i>
+
+            <!-- Login View -->
+            <div id="loginView" class="modal-view active">
+                <div class="modal-header">
+                    <h2>Welcome Back</h2>
+                    <p>Enter your details to access your account</p>
+                </div>
+                <div class="social-login">
+                    <button class="btn-social">
+                        <img src="https://www.svgrepo.com/show/475643/google-color.svg" width="22" alt="Google">
+                        Google
+                    </button>
+                    <button class="btn-social">
+                        <img src="https://www.svgrepo.com/show/303108/apple-black-logo.svg" width="22" alt="Apple">
+                        Apple
+                    </button>
+                </div>
+                <div class="divider">or sign in with email</div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••">
+                </div>
+                <a href="javascript:void(0)" class="forgot-link" onclick="switchView('forgot')">Forgot password?</a>
+                <button class="btn btn-primary" style="width:100%; justify-content:center">Sign In</button>
+                <p class="toggle-link">Don't have an account? <a href="javascript:void(0)"
+                        onclick="switchView('register')">Sign Up</a></p>
+            </div>
+
+            <!-- Register View -->
+            <div id="registerView" class="modal-view">
+                <div class="modal-header">
+                    <h2>Create Account</h2>
+                    <p>Join FoodApp and start ordering today</p>
+                </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••">
+                </div>
+                <button class="btn btn-primary" style="width:100%; justify-content:center">Create Account</button>
+                <p class="toggle-link">Already have an account? <a href="javascript:void(0)"
+                        onclick="switchView('login')">Sign In</a></p>
+            </div>
+
+            <!-- Forgot Password View -->
+            <div id="forgotView" class="modal-view">
+                <div class="modal-header">
+                    <h2>Reset Password</h2>
+                    <p>We'll send you a link to reset your password</p>
+                </div>
+                <div class="form-group" style="margin-bottom:30px">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="email@example.com">
+                </div>
+                <button class="btn btn-primary" style="width:100%; justify-content:center">Send Reset Link</button>
+                <p class="toggle-link">Remember your password? <a href="javascript:void(0)"
+                        onclick="switchView('login')">Back to Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle FAQ
+        function toggleFaq(el) {
+            const allItems = document.querySelectorAll('.faq-item');
+            allItems.forEach(item => {
+                if (item !== el) item.classList.remove('active');
+            });
+            el.classList.toggle('active');
+        }
+
+        // Modal Logic
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalViews = document.querySelectorAll('.modal-view');
+
+        function openModal(view = 'login') {
+            modalOverlay.style.display = 'flex';
+            setTimeout(() => {
+                modalOverlay.classList.add('active');
+            }, 10);
+            switchView(view);
+            document.body.style.overflow = 'hidden'; // Disable scroll
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            setTimeout(() => {
+                modalOverlay.style.display = 'none';
+            }, 300);
+            document.body.style.overflow = 'auto'; // Enable scroll
+        }
+
+        function switchView(viewName) {
+            modalViews.forEach(view => {
+                view.classList.remove('active');
+            });
+            document.getElementById(viewName + 'View').classList.add('active');
+        }
+
+        // Close modal on click outside
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        // Toggle Password Visibility
+        function togglePassword(inputId, icon) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.setAttribute('data-lucide', 'eye-off');
+            } else {
+                input.type = 'password';
+                icon.setAttribute('data-lucide', 'eye');
+            }
+            lucide.createIcons(); // Re-render icons
+        }
+    </script>
+</body>
+
+</html>
+html>
