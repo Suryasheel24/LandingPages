@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verdant & Stone — Built for Generations to Come</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+:root{
+  --cream:#F9F8F5; --forest:#1E382B; --terracotta:#C06C47; --sand:#E6E2D8; --ink:#222522;
+  --serif:'Fraunces', serif; --sans:'Plus Jakarta Sans', sans-serif;
+}
+*{box-sizing:border-box;-webkit-font-smoothing:antialiased}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);margin:0;line-height:1.6;padding-top:env(safe-area-inset-top,0px)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1;margin:0}
+p{max-width:60ch;color:#4a4e49}
+.container-x{max-width:1220px;margin:0 auto;padding:0 clamp(20px,5vw,60px)}
+
+nav.vs{position:sticky;top:0;z-index:30;background:rgba(249,248,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--sand);padding:16px 0}
+nav.vs .container-x{display:flex;align-items:center;justify-content:space-between}
+.wordmark{font-family:var(--serif);font-size:1.4rem;color:var(--forest)}
+.navlinks{display:flex;gap:28px;font-size:.92rem}
+.navlinks a{color:var(--ink);text-decoration:none}
+.navlinks a:hover{color:var(--terracotta)}
+.btn-forest{background:var(--forest);color:var(--cream);border:none;padding:12px 24px;border-radius:4px;min-height:44px;font-size:.9rem;transition:background .25s}
+.btn-forest:hover{background:#152a20}
+.btn-outline-terracotta{background:transparent;border:1.5px solid var(--terracotta);color:var(--terracotta);padding:11px 22px;border-radius:4px;min-height:44px;font-size:.9rem}
+@media(max-width:800px){.navlinks{display:none}}
+
+/* Hero */
+.hero{padding:clamp(50px,7vw,96px) 0 80px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.trust-strip{font-size:.82rem;color:var(--forest);letter-spacing:.02em;margin-bottom:16px}
+.hero h1{font-size:clamp(2.5rem,5vw,4rem)}
+.hero p{margin-top:20px;font-size:1.08rem}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}
+.hero-photo{aspect-ratio:4/3.2;border-radius:6px;background:
+  linear-gradient(160deg, #cfd8c4 0%, #a9b896 32%, #7f9270 60%, #566846 100%);
+  position:relative;overflow:hidden}
+.hero-photo::before{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(100deg, rgba(30,56,43,.06) 0 3px, transparent 3px 46px);}
+.hero-photo .cap{position:absolute;left:20px;bottom:20px;background:var(--cream);padding:12px 18px;border-radius:4px;font-size:.8rem;color:var(--forest)}
+
+/* Trust bar */
+.trustbar{border-top:1px solid var(--sand);border-bottom:1px solid var(--sand);padding:32px 0}
+.trustbar .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;text-align:center}
+.trustbar .stat{font-family:var(--serif);font-size:2rem;color:var(--forest)}
+.trustbar .label{font-size:.8rem;color:#666}
+
+.section{padding:80px 0}
+.section-head{max-width:640px;margin-bottom:44px}
+.section-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem)}
+.section-head p{margin-top:14px}
+
+/* Community highlights */
+.highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:850px){.highlights{grid-template-columns:1fr}}
+.highlight-card{border:1px solid var(--sand);border-radius:6px;padding:30px;background:#fff}
+.highlight-card i{font-size:1.5rem;color:var(--terracotta)}
+.highlight-card h3{font-size:1.2rem;margin:16px 0 8px;font-family:var(--sans);font-weight:600}
+.highlight-card p{font-size:.95rem}
+
+/* Residence cards */
+.res-scroller{display:flex;gap:24px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+.res-card{flex:0 0 320px;scroll-snap-align:start;border:1px solid var(--sand);border-radius:6px;overflow:hidden;background:#fff}
+.res-photo{aspect-ratio:4/3;background:linear-gradient(150deg,#e3ddcd,#c9bfa4)}
+.res-body{padding:22px}
+.res-body h3{font-size:1.25rem;font-family:var(--serif)}
+.res-meta{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.res-meta span{font-size:.76rem;border:1px solid var(--sand);padding:5px 10px;border-radius:20px;color:#555}
+.res-cta{width:100%;background:none;border:1px solid var(--forest);color:var(--forest);padding:10px;border-radius:4px;min-height:44px;font-size:.88rem}
+.res-cta:hover{background:var(--forest);color:var(--cream)}
+
+/* Construction transparency */
+.construction{background:var(--forest);color:var(--cream);border-radius:8px;padding:clamp(32px,5vw,56px);display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:850px){.construction{grid-template-columns:1fr}}
+.construction h2{color:var(--cream)}
+.construction p{color:rgba(249,248,245,.75)}
+.spec-list{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:16px}
+.spec-list li{display:flex;gap:14px;align-items:flex-start;font-size:.95rem;border-top:1px solid rgba(249,248,245,.15);padding-top:16px}
+.spec-list li:first-child{border-top:none;padding-top:0}
+.spec-list i{color:var(--terracotta);margin-top:3px}
+
+/* Modal (site tour) */
+.modal-overlay{position:fixed;inset:0;background:rgba(34,37,34,.5);opacity:0;pointer-events:none;transition:opacity .3s;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal-box{background:var(--cream);border-radius:8px;padding:34px;max-width:440px;width:100%;transform:translateY(14px);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-box h3{font-size:1.5rem}
+.modal-box label{font-size:.82rem;display:block;margin:16px 0 6px}
+.modal-box input{width:100%;border:1px solid var(--sand);padding:11px 12px;border-radius:4px;min-height:44px;font-family:var(--sans)}
+.modal-close{float:right;background:none;border:none;font-size:1.4rem;min-width:44px;min-height:44px;cursor:pointer}
+
+footer.vs{border-top:1px solid var(--sand);padding:40px 0;font-size:.85rem;color:#666}
+.footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+</style>
+</head>
+<body>
+
+<nav class="vs">
+  <div class="container-x">
+    <span class="wordmark">Verdant & Stone</span>
+    <div class="navlinks">
+      <a href="#communities">Communities</a>
+      <a href="#construction">Construction</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="btn-forest" id="openTour">Book a Site Tour</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container-x hero-grid">
+    <div>
+      <div class="trust-strip">27 years building family communities · Master-builder warranted</div>
+      <h1>Built for Generations to Come</h1>
+      <p>Three new neighborhoods, each planned around a school, a park, and a street you'll actually know your neighbors on. Every home is built to stay in the family.</p>
+      <div class="hero-actions">
+        <button class="btn-forest" onclick="document.getElementById('openTour').click()">Explore Family Estates</button>
+        <button class="btn-outline-terracotta">Download Community Brochure</button>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="cap">Elmwood Commons — Phase 2, now selling</div>
+    </div>
+  </div>
+</section>
+
+<div class="trustbar">
+  <div class="container-x row">
+    <div><div class="stat">27</div><div class="label">Years building communities</div></div>
+    <div><div class="stat">1,400+</div><div class="label">Families housed</div></div>
+    <div><div class="stat">10-yr</div><div class="label">Structural warranty</div></div>
+    <div><div class="stat">A+</div><div class="label">Better Business Bureau rating</div></div>
+  </div>
+</div>
+
+<section class="section" id="communities">
+  <div class="container-x">
+    <div class="section-head">
+      <h2>A neighborhood, not just a lot</h2>
+      <p>Every Verdant & Stone community is planned around walking distance to schools, protected green space, and quiet interior streets built for kids on bikes.</p>
+    </div>
+    <div class="highlights">
+      <div class="highlight-card">
+        <i class="bi bi-mortarboard"></i>
+        <h3>Zoned for top-rated schools</h3>
+        <p>All current communities fall within a 9+ rated public school district, walkable from most lots.</p>
+      </div>
+      <div class="highlight-card">
+        <i class="bi bi-tree"></i>
+        <h3>Private parks & trails</h3>
+        <p>Each neighborhood includes a resident-only park with a play structure, and connects to regional trails.</p>
+      </div>
+      <div class="highlight-card">
+        <i class="bi bi-shield-check"></i>
+        <h3>Safer by design</h3>
+        <p>Interior-facing streets, sightline planning, and community lighting reviewed with local safety officers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-x">
+    <div class="section-head">
+      <h2>Current family layouts</h2>
+      <p>Four floorplans available across our open communities — scroll to compare.</p>
+    </div>
+    <div class="res-scroller">
+      <div class="res-card">
+        <div class="res-photo"></div>
+        <div class="res-body">
+          <h3>The Hawthorne</h3>
+          <div class="res-meta"><span>4 bed / 3 bath</span><span>2,640 sq ft</span><span>Private yard</span></div>
+          <p style="font-size:.9rem">Delivery: Spring 2027</p>
+          <button class="res-cta" onclick="document.getElementById('openTour').click()">Book a Private Site Tour</button>
+        </div>
+      </div>
+      <div class="res-card">
+        <div class="res-photo"></div>
+        <div class="res-body">
+          <h3>The Birchwood</h3>
+          <div class="res-meta"><span>3 bed / 2.5 bath</span><span>2,180 sq ft</span><span>Corner lot</span></div>
+          <p style="font-size:.9rem">Delivery: Winter 2026</p>
+          <button class="res-cta" onclick="document.getElementById('openTour').click()">Book a Private Site Tour</button>
+        </div>
+      </div>
+      <div class="res-card">
+        <div class="res-photo"></div>
+        <div class="res-body">
+          <h3>The Cedar Grove</h3>
+          <div class="res-meta"><span>4 bed / 3.5 bath</span><span>3,050 sq ft</span><span>Bonus room</span></div>
+          <p style="font-size:.9rem">Delivery: Fall 2026</p>
+          <button class="res-cta" onclick="document.getElementById('openTour').click()">Book a Private Site Tour</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="construction">
+  <div class="container-x">
+    <div class="construction">
+      <div>
+        <h2>Built to outlast the mortgage</h2>
+        <p>We build the way our founders were trained to — because a house that needs to last three generations doesn't get value-engineered corners.</p>
+      </div>
+      <ul class="spec-list">
+        <li><i class="bi bi-check2-circle"></i><span>Poured concrete foundations, engineered for regional soil conditions</span></li>
+        <li><i class="bi bi-check2-circle"></i><span>Continuous exterior insulation, exceeding code by 30%</span></li>
+        <li><i class="bi bi-check2-circle"></i><span>10-year structural warranty, backed by our master builders directly</span></li>
+        <li><i class="bi bi-check2-circle"></i><span>Third-party inspected at every framing and mechanical stage</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="vs" id="contact">
+  <div class="container-x footer-row">
+    <span>Verdant & Stone Communities — family estates, three regions</span>
+    <span>hello@verdantandstone.example · +1 (614) 555-0132</span>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="tourOverlay">
+  <div class="modal-box">
+    <button class="modal-close" id="closeTour" aria-label="Close">&times;</button>
+    <h3>Book a Private Site Tour</h3>
+    <p style="font-size:.92rem">A community specialist will walk you through available lots in person.</p>
+    <form id="tourForm">
+      <label for="tName">Full name</label>
+      <input id="tName" required>
+      <label for="tPhone">Phone</label>
+      <input id="tPhone" type="tel" required>
+      <label for="tDate">Preferred tour date</label>
+      <input id="tDate" type="date">
+      <button type="submit" class="btn-forest" style="width:100%;margin-top:22px">Request Tour</button>
+      <p id="tourConfirm" style="display:none;margin-top:12px;color:var(--terracotta);font-size:.9rem">Request received — we'll call to confirm a time.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+const overlay = document.getElementById('tourOverlay');
+document.getElementById('openTour').addEventListener('click', ()=> overlay.classList.add('open'));
+document.getElementById('closeTour').addEventListener('click', ()=> overlay.classList.remove('open'));
+overlay.addEventListener('click', e=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+document.getElementById('tourForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  document.getElementById('tourConfirm').style.display='block';
+});
+</script>
+</body>
+</html>

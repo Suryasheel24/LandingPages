@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduSphere — Senior Tech Masterclasses, Live Code Sandbox & Certifications</title>
+  <meta name="description" content="Learn senior-level UI engineering, generative AI, WebGL shaders, and design systems with our interactive live code compiler.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Floating Island Navbar with Sliding Indicator & Mobile Drawer -->
+  <header>
+    <nav class="navbar-edusphere d-flex justify-content-between align-items-center" aria-label="Main Course Navigation">
+      <a href="#hero" class="d-flex align-items-center gap-2 text-dark text-decoration-none fw-bold fs-5">
+        <div class="p-2 rounded-3 text-white d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background: #4F46E5 !important;">
+          <i class="bi bi-mortarboard-fill fs-6"></i>
+        </div>
+        <span>Edu<span style="color: #4F46E5;">Sphere</span></span>
+      </a>
+
+      <div class="nav-edu-wrapper d-none d-lg-flex">
+        <div class="nav-edu-sliding-pill" id="navEduSlidingPill"></div>
+        <ul class="nav-links-edusphere" id="navLinksEdu">
+          <li><a href="#sandbox" class="active">Live Sandbox</a></li>
+          <li><a href="#dashboard">Mastery & Streak</a></li>
+          <li><a href="#benchmark">Stack Benchmark</a></li>
+          <li><a href="#mentors">Mentor Hub</a></li>
+          <li><a href="#catalog">Masterclasses</a></li>
+          <li><a href="#terminalLab">WASM Terminal</a></li>
+        </ul>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn-solid-primary d-none d-sm-inline-flex" data-bs-toggle="modal" data-bs-target="#certModal">
+          <i class="bi bi-award"></i>
+          <span>Verify Credential</span>
+        </button>
+        <button class="mobile-edu-toggle d-lg-none" id="mobileEduToggle" aria-label="Open syllabus menu" aria-expanded="false" aria-controls="mobileDrawerEdu">
+          <i class="bi bi-list fs-4"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Syllabus Drawer -->
+    <div class="mobile-drawer-edu" id="mobileDrawerEdu" role="dialog" aria-modal="true" aria-label="Mobile Syllabus Navigation">
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="#hero" class="d-flex align-items-center gap-2 text-dark text-decoration-none fw-bold fs-5">
+          <div class="p-2 rounded-3 text-white d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; background: #4F46E5 !important;">
+            <i class="bi bi-mortarboard-fill fs-6"></i>
+          </div>
+          <span>Edu<span style="color: #4F46E5;">Sphere</span></span>
+        </a>
+        <button class="mobile-edu-toggle" id="mobileEduClose" aria-label="Close syllabus menu">
+          <i class="bi bi-x-lg fs-5"></i>
+        </button>
+      </div>
+
+      <ul class="mobile-drawer-edu-links">
+        <li><a href="#sandbox">01. Live Code Sandbox</a></li>
+        <li><a href="#dashboard">02. Student Mastery & Streak</a></li>
+        <li><a href="#benchmark">03. Tech Stack Benchmark</a></li>
+        <li><a href="#mentors">04. Pair-Programming & Mentors</a></li>
+        <li><a href="#catalog">05. Masterclass Catalog</a></li>
+        <li><a href="#curriculum">06. Curriculum Roadmap</a></li>
+        <li><a href="#terminalLab">07. WASM Compiler Terminal</a></li>
+      </ul>
+
+      <div class="d-flex flex-column gap-2">
+        <button class="btn-solid-primary justify-content-center py-3" data-bs-toggle="modal" data-bs-target="#certModal" onclick="document.getElementById('mobileEduClose').click();">
+          <i class="bi bi-award me-1"></i> Verify Credential
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content-edu">
+    <!-- 1. Hero Section: Centered Vertically with Generous Spacing -->
+    <section class="section-rhythm hero-section" id="hero">
+      <div class="edu-container">
+        <div class="row align-items-center g-5 gy-lg-0">
+          <div class="col-lg-6 pe-lg-4">
+            <span class="badge-eyebrow-edu">
+              🚀 2026 Senior Architecture Track
+            </span>
+            <h1 class="display-4 fw-bold mb-3" style="letter-spacing: -0.025em; line-height: 1.15;">
+              Learn Senior Skills with <br>
+              <span style="color: #4F46E5;">Interactive Live Code.</span>
+            </h1>
+            <p class="lead text-secondary mb-4" style="font-size: 1.125rem;">
+              Master advanced frontend performance, generative UI streaming, and WebGL shader math. Edit live components directly in our in-browser compiler.
+            </p>
+            <div class="d-flex flex-wrap gap-3 mb-5">
+              <a href="#catalog" class="btn-solid-primary">Explore Masterclasses</a>
+              <a href="#benchmark" class="btn-outline-secondary-pill">Take Benchmark Test</a>
+            </div>
+
+            <div class="d-flex gap-4 small text-muted border-top pt-4">
+              <span><strong class="text-dark">24,000+</strong> Staff Engineers</span>
+              <span><strong class="text-dark">4.9/5</strong> Course Rating</span>
+              <span><strong class="text-dark">100%</strong> WASM Evaluated</span>
+            </div>
+          </div>
+
+          <!-- Split-Pane Interactive IDE Playground -->
+          <div class="col-lg-6" id="sandbox">
+            <div class="split-pane-ide">
+              <div class="ide-header">
+                <div class="ide-header-left">
+                  <div class="window-dots" aria-hidden="true">
+                    <span class="window-dot red"></span>
+                    <span class="window-dot yellow"></span>
+                    <span class="window-dot green"></span>
+                  </div>
+                  <div class="ide-tabs" role="tablist" aria-label="Editor Tabs">
+                    <button type="button" class="ide-tab active" data-file="Button.tsx" role="tab" aria-selected="true" id="tabButtonTsx">
+                      <span class="ide-file-icon tsx">TS</span>
+                      <span>Button.tsx</span>
+                    </button>
+                    <button type="button" class="ide-tab" data-file="glass.module.scss" role="tab" aria-selected="false" id="tabGlassScss">
+                      <span class="ide-file-icon scss">#</span>
+                      <span>glass.module.scss</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="ide-header-right">
+                  <div class="ide-preset-group" role="group" aria-label="Component Presets">
+                    <button type="button" class="code-preset-pill active" data-preset="neon" aria-pressed="true">
+                      <span class="preset-glow-dot neon"></span> Neon Glow
+                    </button>
+                    <button type="button" class="code-preset-pill" data-preset="glass" aria-pressed="false">
+                      <span class="preset-glow-dot glass"></span> Frosted Glass
+                    </button>
+                    <button type="button" class="code-preset-pill" data-preset="bento" aria-pressed="false">
+                      <span class="preset-glow-dot bento"></span> Bento
+                    </button>
+                  </div>
+                  <button type="button" class="ide-copy-btn" id="ideCopyBtn" title="Copy code" aria-label="Copy code to clipboard">
+                    <i class="bi bi-clipboard" id="ideCopyIcon"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="ide-body">
+                <div class="ide-code-pane">
+                  <div class="ide-line-numbers" id="ideLineNumbers" aria-hidden="true"></div>
+                  <pre class="ide-code-container"><code id="ideCodeBlock" class="font-mono"></code></pre>
+                </div>
+                <div class="ide-preview-pane" id="sandboxLivePreview" aria-label="Component Live Preview Canvas">
+                  <!-- Rendered dynamically by initLiveSandbox -->
+                </div>
+              </div>
+
+              <div class="ide-status-bar">
+                <span class="status-indicator"><span class="status-pulse"></span> Live Sync</span>
+                <span class="status-file-info" id="ideStatusFileInfo">TypeScript React · UTF-8</span>
+                <span class="status-fps"><i class="bi bi-lightning-charge-fill text-warning me-1"></i>GPU Accelerated</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Structured Bento Competency & Dynamic Learning Streak -->
+    <section class="section-rhythm" id="dashboard">
+      <div class="edu-container">
+        <!-- Competency Bento Grid -->
+        <div class="edu-card p-4 p-md-5 mb-4">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+              <span class="badge-eyebrow-edu">
+                <i class="bi bi-activity"></i> Live Competency Metrics
+              </span>
+              <h2 class="h3 fw-bold text-dark mb-2">Automated Skill Mastery & Progress Ring</h2>
+              <p class="text-secondary mb-0">Track modular code submissions, peer-reviewed capstones, and cryptographic on-chain credential verification.</p>
+            </div>
+
+            <div class="col-lg-6 d-flex align-items-center justify-content-lg-end justify-content-start gap-4 flex-wrap">
+              <div class="position-relative d-inline-block" style="width: 120px; height: 120px;">
+                <svg width="120" height="120">
+                  <circle stroke="#E2E8F0" stroke-width="10" fill="transparent" r="48" cx="60" cy="60"/>
+                  <circle id="progressRingCircle" stroke="#4F46E5" stroke-width="10" stroke-linecap="round" fill="transparent" r="48" cx="60" cy="60" data-percent="82" style="transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset 1s ease;"/>
+                </svg>
+                <div class="position-absolute top-50 start-50 translate-middle text-center">
+                  <span class="fs-4 fw-bold text-dark font-mono">82%</span>
+                </div>
+              </div>
+
+              <div class="d-flex flex-column gap-2 small">
+                <span class="d-inline-flex align-items-center gap-2 text-dark font-monospace">
+                  <i class="bi bi-check-circle-fill text-success"></i> <strong>18 of 22</strong> Lessons Mastered
+                </span>
+                <span class="d-inline-flex align-items-center gap-2 text-dark font-monospace">
+                  <i class="bi bi-check-circle-fill text-success"></i> <strong>3 Capstone Builds</strong> Evaluated
+                </span>
+                <span class="d-inline-flex align-items-center gap-2 text-success fw-bold font-monospace">
+                  <i class="bi bi-shield-check"></i> Certificate Eligibility: 100%
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gamified Learning Streak & XP Bar -->
+        <div class="edu-card p-4 p-md-4">
+          <div class="streak-xp-widget">
+            <div class="streak-flame-box">
+              <span class="streak-flame-icon">🔥</span>
+              <div>
+                <div class="fw-bold fs-5 text-dark font-mono">14-Day Streak</div>
+                <div class="text-muted" style="font-size: 0.75rem;">Top 3% Platform Consistency</div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex justify-content-between align-items-center small">
+                <span class="text-secondary fw-semibold">Level 8 Senior Architect</span>
+                <span class="font-mono text-primary fw-bold" id="xpCounterDisplay">4,850 / 6,000 XP</span>
+              </div>
+              <div class="xp-bar-container">
+                <div class="xp-bar-fill" id="xpBarFill" style="width: 80%;"></div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-1">
+                <div class="weekly-checkins">
+                  <div class="checkin-node completed" title="Monday: 2 Lessons Completed">M</div>
+                  <div class="checkin-node completed" title="Tuesday: 1 Capstone Review">T</div>
+                  <div class="checkin-node completed" title="Wednesday: Code Challenge Solved">W</div>
+                  <div class="checkin-node completed" title="Thursday: WebGL Shader Built">T</div>
+                  <div class="checkin-node completed" title="Friday: 1-on-1 Mentorship">F</div>
+                  <div class="checkin-node today" title="Today: Daily Benchmark Challenge">S</div>
+                  <div class="checkin-node" title="Sunday: Weekly Recap">S</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex gap-2 flex-wrap justify-content-start justify-content-md-end">
+              <span class="badge bg-light text-dark border px-3 py-2 rounded-pill font-mono small" title="Shader Wizard Badge">
+                ⚡ Shader Wizard
+              </span>
+              <span class="badge bg-light text-dark border px-3 py-2 rounded-pill font-mono small" title="Subgrid Master Badge">
+                📐 Subgrid Master
+              </span>
+              <span class="badge bg-light text-dark border px-3 py-2 rounded-pill font-mono small" title="WASM Pioneer Badge">
+                🦀 WASM Pioneer
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Interactive Tech Stack Benchmark & Skill Radar -->
+    <section class="section-rhythm" id="benchmark">
+      <div class="edu-container">
+        <div class="text-center mb-5">
+          <span class="badge-eyebrow-edu">
+            Architecture Proficiency Assessment
+          </span>
+          <h2 class="h2 fw-bold text-dark mb-2">Interactive Tech Stack Benchmark</h2>
+          <p class="text-secondary small">Calibrate your engineering proficiency vectors to calculate your tier classification and customized syllabus recommendation.</p>
+        </div>
+
+        <div class="benchmark-container">
+          <div class="row align-items-center g-5">
+            <!-- Left: Interactive Vector Sliders -->
+            <div class="col-lg-6">
+              <h3 class="h5 fw-bold text-dark mb-4 d-flex align-items-center gap-2">
+                <i class="bi bi-sliders2 text-primary"></i>
+                <span>Adjust Vector Proficiency</span>
+              </h3>
+
+              <div class="d-flex flex-column gap-4">
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-2 small">
+                    <span class="fw-semibold text-dark">CSS Grid & Micro-Interactions</span>
+                    <span class="font-mono text-primary fw-bold" id="valCss">92%</span>
+                  </div>
+                  <input type="range" class="benchmark-slider" id="sliderCss" min="20" max="100" value="92" aria-label="CSS Grid proficiency">
+                </div>
+
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-2 small">
+                    <span class="fw-semibold text-dark">WebAssembly & Audio Nodes</span>
+                    <span class="font-mono text-primary fw-bold" id="valWasm">85%</span>
+                  </div>
+                  <input type="range" class="benchmark-slider" id="sliderWasm" min="20" max="100" value="85" aria-label="WebAssembly proficiency">
+                </div>
+
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-2 small">
+                    <span class="fw-semibold text-dark">WebGL & 3D Shader Math</span>
+                    <span class="font-mono text-primary fw-bold" id="valWebgl">78%</span>
+                  </div>
+                  <input type="range" class="benchmark-slider" id="sliderWebgl" min="20" max="100" value="78" aria-label="WebGL proficiency">
+                </div>
+
+                <div>
+                  <div class="d-flex justify-content-between align-items-center mb-2 small">
+                    <span class="fw-semibold text-dark">Client-Side AI & Token Streaming</span>
+                    <span class="font-mono text-primary fw-bold" id="valAi">88%</span>
+                  </div>
+                  <input type="range" class="benchmark-slider" id="sliderAi" min="20" max="100" value="88" aria-label="Client-side AI streaming proficiency">
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Dynamic SVG Skill Radar & Tier Badge -->
+            <div class="col-lg-6 text-center">
+              <div class="radar-chart-box mb-4">
+                <svg width="240" height="240" viewBox="0 0 240 240" aria-label="Skill Radar Chart">
+                  <!-- Background Grid Polygons -->
+                  <polygon points="120,30 210,120 120,210 30,120" fill="none" stroke="#E2E8F0" stroke-width="1"/>
+                  <polygon points="120,60 180,120 120,180 60,120" fill="none" stroke="#E2E8F0" stroke-width="1"/>
+                  <polygon points="120,90 150,120 120,150 90,120" fill="none" stroke="#E2E8F0" stroke-width="1"/>
+                  
+                  <!-- Axis Lines -->
+                  <line x1="120" y1="20" x2="120" y2="220" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="2,2"/>
+                  <line x1="20" y1="120" x2="220" y2="120" stroke="#CBD5E1" stroke-width="1" stroke-dasharray="2,2"/>
+
+                  <!-- Dynamic Skill Polygon -->
+                  <polygon id="radarPolygon" class="radar-polygon" points="120,38 196,120 120,190 41,120"/>
+
+                  <!-- Axis Labels -->
+                  <text x="120" y="15" text-anchor="middle" font-size="10" font-family="JetBrains Mono" fill="#475569" font-weight="bold">CSS</text>
+                  <text x="230" y="123" text-anchor="middle" font-size="10" font-family="JetBrains Mono" fill="#475569" font-weight="bold">WASM</text>
+                  <text x="120" y="235" text-anchor="middle" font-size="10" font-family="JetBrains Mono" fill="#475569" font-weight="bold">WebGL</text>
+                  <text x="10" y="123" text-anchor="middle" font-size="10" font-family="JetBrains Mono" fill="#475569" font-weight="bold">AI</text>
+                </svg>
+              </div>
+
+              <div class="d-inline-flex flex-column align-items-center">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span class="badge bg-primary text-white font-mono px-3 py-1 rounded-pill" id="benchmarkTierBadge">
+                    Staff UI Architect
+                  </span>
+                  <span class="fs-5 fw-bold text-dark font-mono" id="benchmarkOverallScore">86 / 100</span>
+                </div>
+                <p class="small text-muted mb-0" id="benchmarkRecommendation">
+                  Recommended Track: <strong class="text-dark">Generative UI & LLM Streaming Architecture</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Interactive Peer Mentor Hub -->
+    <section class="section-rhythm" id="mentors">
+      <div class="edu-container">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-5">
+          <div>
+            <span class="badge-eyebrow-edu">
+              Active Collaborative Sessions
+            </span>
+            <h2 class="h2 fw-bold text-dark mb-0">Live Code Pair-Programming & Mentor Hub</h2>
+          </div>
+
+          <button class="btn-solid-primary" id="requestReviewBtn">
+            <i class="bi bi-people-fill"></i>
+            <span>Request 1-on-1 Code Review</span>
+          </button>
+        </div>
+
+        <div class="row g-4">
+          <!-- Mentor 1 -->
+          <div class="col-md-4">
+            <article class="mentor-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="position-relative d-inline-block">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Elena Rostova" class="mentor-avatar">
+                  <span class="mentor-presence-dot online" title="Online and reviewing"></span>
+                </div>
+                <div class="d-flex align-items-center gap-2 px-2 py-1 rounded-pill bg-light border text-success small font-mono">
+                  <span class="audio-soundwave">
+                    <span class="soundwave-bar"></span>
+                    <span class="soundwave-bar"></span>
+                    <span class="soundwave-bar"></span>
+                    <span class="soundwave-bar"></span>
+                  </span>
+                  <span>Room #884 Live</span>
+                </div>
+              </div>
+
+              <h3 class="h6 fw-bold text-dark mb-1">Elena Rostova</h3>
+              <p class="small text-muted mb-3">Principal Performance Architect @ Stripe (ex-Vercel) • WASM & Web Audio</p>
+              <div class="d-flex justify-content-between align-items-center pt-2 border-top small">
+                <span class="text-secondary"><i class="bi bi-star-fill text-warning me-1"></i>4.98 (124 reviews)</span>
+                <button class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1 font-mono" style="font-size: 0.75rem;" onclick="document.getElementById('requestReviewBtn').click();">Instant Review</button>
+              </div>
+            </article>
+          </div>
+
+          <!-- Mentor 2 -->
+          <div class="col-md-4">
+            <article class="mentor-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="position-relative d-inline-block">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Marcus Vance" class="mentor-avatar">
+                  <span class="mentor-presence-dot online" title="Online and reviewing"></span>
+                </div>
+                <div class="d-flex align-items-center gap-2 px-2 py-1 rounded-pill bg-light border text-muted small font-mono">
+                  <span>Room #412 Standby</span>
+                </div>
+              </div>
+
+              <h3 class="h6 fw-bold text-dark mb-1">Marcus Vance</h3>
+              <p class="small text-muted mb-3">Staff UI Engineer @ Figma • CSS Grid Math & 3D Web Glare</p>
+              <div class="d-flex justify-content-between align-items-center pt-2 border-top small">
+                <span class="text-secondary"><i class="bi bi-star-fill text-warning me-1"></i>4.95 (98 reviews)</span>
+                <button class="btn btn-sm btn-outline-primary rounded-pill px-3 py-1 font-mono" style="font-size: 0.75rem;" onclick="document.getElementById('requestReviewBtn').click();">In 15m</button>
+              </div>
+            </article>
+          </div>
+
+          <!-- Mentor 3 -->
+          <div class="col-md-4">
+            <article class="mentor-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="position-relative d-inline-block">
+                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="Dr. Kenji Sato" class="mentor-avatar">
+                  <span class="mentor-presence-dot busy" title="In active session"></span>
+                </div>
+                <div class="d-flex align-items-center gap-2 px-2 py-1 rounded-pill bg-light border text-warning small font-mono">
+                  <span>In Session (12m left)</span>
+                </div>
+              </div>
+
+              <h3 class="h6 fw-bold text-dark mb-1">Dr. Kenji Sato</h3>
+              <p class="small text-muted mb-3">Lead Shader Researcher • WebGL 2.0 & GLSL Math Optimization</p>
+              <div class="d-flex justify-content-between align-items-center pt-2 border-top small">
+                <span class="text-secondary"><i class="bi bi-star-fill text-warning me-1"></i>5.00 (87 reviews)</span>
+                <span class="text-muted fw-bold font-mono">Next: 30m</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Course Catalog with Integrated Search & Segmented Controls -->
+    <section class="section-rhythm" id="catalog">
+      <div class="edu-container">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-5">
+          <div>
+            <span class="badge-eyebrow-edu">
+              Curated Masterclasses
+            </span>
+            <h2 class="h2 fw-bold text-dark mb-0">Senior Curriculum Tracks</h2>
+          </div>
+
+          <div class="d-flex gap-2 flex-wrap align-items-center">
+            <div class="position-relative">
+              <input type="text" id="courseSearchInput" class="form-control form-control-sm rounded-pill px-3 py-2 border" placeholder="🔍 Search curriculum..." style="width: 220px; font-size: 0.85rem;" aria-label="Search curriculum">
+            </div>
+            <div class="segmented-control-edu">
+              <button class="segmented-btn-edu active course-filter-btn" data-filter="all">All Tracks</button>
+              <button class="segmented-btn-edu course-filter-btn" data-filter="ui">UI & 3D</button>
+              <button class="segmented-btn-edu course-filter-btn" data-filter="dev">Audio & Canvas</button>
+              <button class="segmented-btn-edu course-filter-btn" data-filter="ai">AI Systems</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Course Card 1 -->
+          <div class="col-lg-4 col-md-6 course-item-col" data-category="ui">
+            <article class="edu-card p-4 p-xl-5 h-100 d-flex flex-column justify-content-between position-relative">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge-pill-soft bg-primary-subtle text-primary" style="background: rgba(79, 70, 229, 0.1) !important; color: #4F46E5 !important;">
+                    UI Architecture
+                  </span>
+                  <span class="font-mono small text-muted">6 Weeks</span>
+                </div>
+                <h3 class="h5 fw-bold course-title mb-2 text-dark">Advanced CSS Layouts, Bento Grids & 3D Web Glare</h3>
+                <p class="small text-secondary mb-3">Master modern CSS Grid subgrids, container queries, 3D tilt perspective math, and glassmorphic micro-interactions.</p>
+                
+                <ul class="course-features-list">
+                  <li><i class="bi bi-check-circle-fill"></i> Subgrids & Container Queries</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 60fps Hardware Acceleration</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Bento Design System Capstone</li>
+                </ul>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <div>
+                  <span class="text-muted small d-block" style="font-size: 0.75rem;">Tuition</span>
+                  <span class="h5 text-dark fw-bold font-mono mb-0">$129</span>
+                </div>
+                <a href="#curriculum" class="link-underglow">Preview Syllabus <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Course Card 2 (Featured with Refined Inside Tag) -->
+          <div class="col-lg-4 col-md-6 course-item-col" data-category="dev">
+            <article class="edu-card featured-course p-4 p-xl-5 h-100 d-flex flex-column justify-content-between position-relative">
+              <span class="floating-popular-badge">MOST POPULAR</span>
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-3 pe-5">
+                  <span class="badge-pill-soft bg-success-subtle text-success" style="background: rgba(16, 185, 129, 0.1) !important; color: #059669 !important;">
+                    Web Audio & Visualizer
+                  </span>
+                  <span class="font-mono small text-muted">8 Weeks</span>
+                </div>
+                <h3 class="h5 fw-bold course-title mb-2 text-dark">Web Audio API Synthesizers & Real-Time Canvas Visualizers</h3>
+                <p class="small text-secondary mb-3">Construct in-browser frequency synthesizers, dual-oscillator binaural nodes, and 60fps wave renderers.</p>
+                
+                <ul class="course-features-list">
+                  <li><i class="bi bi-check-circle-fill"></i> Dual-Oscillator Synthesizers</li>
+                  <li><i class="bi bi-check-circle-fill"></i> FFT Waveform Analyzers</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Spatial Audio Node Graphs</li>
+                </ul>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <div>
+                  <span class="text-muted small d-block" style="font-size: 0.75rem;">Tuition</span>
+                  <span class="h5 text-dark fw-bold font-mono mb-0">$149</span>
+                </div>
+                <a href="#curriculum" class="btn-solid-primary">Enroll in Track</a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Course Card 3 -->
+          <div class="col-lg-4 col-md-6 course-item-col" data-category="ai">
+            <article class="edu-card p-4 p-xl-5 h-100 d-flex flex-column justify-content-between position-relative">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge-pill-soft bg-warning-subtle text-warning-emphasis" style="background: rgba(245, 158, 11, 0.1) !important; color: #D97706 !important;">
+                    Generative AI Systems
+                  </span>
+                  <span class="font-mono small text-muted">6 Weeks</span>
+                </div>
+                <h3 class="h5 fw-bold course-title mb-2 text-dark">Client-Side AI Integration & LLM Streaming Interfaces</h3>
+                <p class="small text-secondary mb-3">Build fluid typewriter stream renderers, tokenizer token math, client-side embeddings, and low-latency optimistic state.</p>
+                
+                <ul class="course-features-list">
+                  <li><i class="bi bi-check-circle-fill"></i> SSE & ReadableStream UI</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Optimistic State Rollbacks</li>
+                  <li><i class="bi bi-check-circle-fill"></i> Client-Side Vector Math</li>
+                </ul>
+              </div>
+              <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+                <div>
+                  <span class="text-muted small d-block" style="font-size: 0.75rem;">Tuition</span>
+                  <span class="h5 text-dark fw-bold font-mono mb-0">$179</span>
+                </div>
+                <a href="#curriculum" class="link-underglow">Preview Syllabus <i class="bi bi-arrow-right"></i></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Interactive Curriculum Accordion Roadmap -->
+    <section class="section-rhythm" id="curriculum">
+      <div class="edu-container" style="max-width: 900px;">
+        <div class="text-center mb-5">
+          <span class="badge-eyebrow-edu">
+            Syllabus Breakdown
+          </span>
+          <h2 class="h2 fw-bold text-dark mb-2">Curriculum Roadmap</h2>
+          <p class="text-muted small">Every module includes guided video tutorials, live coding checkpoints, and automated grading tests.</p>
+        </div>
+
+        <div class="accordion curriculum-accordion" id="curriculumAccordion">
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button d-flex justify-content-between align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#m1">
+                <span class="fw-bold">Module 01: Core Architecture & CSS Grid Mastery</span>
+                <span class="badge bg-light text-dark font-mono ms-auto me-3">1h 20m</span>
+              </button>
+            </h3>
+            <div id="m1" class="accordion-collapse collapse show" data-bs-parent="#curriculumAccordion">
+              <div class="accordion-body small text-muted">
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                  <span>1.1 Asymmetrical Bento Grid Systems & Token Fallbacks</span>
+                  <span class="font-mono text-muted">42m</span>
+                </div>
+                <div class="d-flex justify-content-between py-2">
+                  <span>1.2 Fluid Typography Scaling with Clamp & Minmax</span>
+                  <span class="font-mono text-muted">38m</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed d-flex justify-content-between align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#m2">
+                <span class="fw-bold">Module 02: 3D Micro-Interactions & Hardware Accelerated Animations</span>
+                <span class="badge bg-light text-dark font-mono ms-auto me-3">1h 43m</span>
+              </button>
+            </h3>
+            <div id="m2" class="accordion-collapse collapse" data-bs-parent="#curriculumAccordion">
+              <div class="accordion-body small text-muted">
+                <div class="d-flex justify-content-between py-2 border-bottom">
+                  <span>2.1 CSS 3D Perspective & Gyroscopic Cursor Mapping</span>
+                  <span class="font-mono text-muted">55m</span>
+                </div>
+                <div class="d-flex justify-content-between py-2">
+                  <span>2.2 SVG Dasharray Route Animations & Particle Canvases</span>
+                  <span class="font-mono text-muted">48m</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Interactive WASM Compiler & Diagnostics Terminal (Replaced Notepad) -->
+    <section class="section-rhythm" id="terminalLab">
+      <div class="edu-container" style="max-width: 960px;">
+        <div class="text-center mb-4">
+          <span class="badge-eyebrow-edu">
+            Developer Labs
+          </span>
+          <h2 class="h2 fw-bold text-dark mb-2">Interactive WASM & Diagnostics Console</h2>
+          <p class="text-secondary small">Run live compilation benchmarks, Web Vitals performance audits, and bytecode diagnostics.</p>
+        </div>
+
+        <div class="wasm-terminal-wrapper">
+          <div class="wasm-terminal-header">
+            <div class="d-flex align-items-center gap-3">
+              <div class="window-dots">
+                <span class="window-dot red"></span>
+                <span class="window-dot yellow"></span>
+                <span class="window-dot green"></span>
+              </div>
+              <span class="font-mono text-light small fw-bold" style="font-size: 0.8rem;">bash ~ edusphere-cli v3.2.0 (x86_64-wasm)</span>
+            </div>
+
+            <div class="wasm-terminal-chips">
+              <button class="wasm-chip-btn" data-cmd="test --math">$ test --math</button>
+              <button class="wasm-chip-btn" data-cmd="compile --wasm">$ compile --wasm</button>
+              <button class="wasm-chip-btn" data-cmd="audit --perf">$ audit --perf</button>
+              <button class="wasm-chip-btn" data-cmd="clear">$ clear</button>
+            </div>
+          </div>
+
+          <div class="wasm-terminal-output" id="wasmTerminalOutput">
+            <div class="wasm-log-line wasm-log-dim"># EduSphere WASM Compiler Engine v3.2.0 initialized.</div>
+            <div class="wasm-log-line wasm-log-info"># Click command chips above or type a command below.</div>
+            <div class="wasm-log-line wasm-log-prompt">$ edusphere status</div>
+            <div class="wasm-log-line wasm-log-success">✓ 14 Architecture modules loaded in WebAssembly linear memory (0.4ms)</div>
+            <div class="wasm-log-line wasm-log-dim">Ready for evaluation. Try 'test --math' or 'compile --wasm'.</div>
+          </div>
+
+          <form class="wasm-terminal-input-bar" id="wasmTerminalForm" onsubmit="event.preventDefault();">
+            <span class="wasm-terminal-prompt-symbol">&gt;</span>
+            <input type="text" class="wasm-terminal-input" id="wasmTerminalInput" placeholder="type 'help', 'compile --wasm', 'test --math', or 'clear'..." autocomplete="off">
+            <button type="submit" class="btn btn-sm btn-dark text-muted font-mono" style="font-size: 0.75rem; background: #1E293B;">Run</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Cryptographic Certificate Modal -->
+  <div class="modal fade" id="certModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content p-4 border-0 shadow-lg rounded-4" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(24px);">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-shield-lock-fill text-primary fs-5"></i>
+            <h4 class="modal-title h5 fw-bold mb-0">Cryptographic Credential Verification</h4>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-label small fw-semibold text-muted">Recipient Name:</label>
+            <input type="text" id="certStudentName" class="form-control rounded-pill px-3" value="Alex Mercer">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label small fw-semibold text-muted">Specialization:</label>
+            <input type="text" id="certTrackName" class="form-control rounded-pill px-3" value="Senior Frontend Architecture & WASM">
+          </div>
+        </div>
+        
+        <!-- High-Fidelity Verifiable Certificate Card -->
+        <div class="verifiable-cert-card mb-4">
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div>
+              <span class="badge bg-primary text-white font-mono px-3 py-1 rounded-pill mb-2">
+                VERIFIED ON-CHAIN CREDENTIAL
+              </span>
+              <h3 class="h4 fw-bold text-dark mb-0">Certificate of Staff Mastery</h3>
+              <p class="small text-muted font-mono mb-0">EduSphere Technical Registry • ID: #ED-8842-X9</p>
+            </div>
+
+            <!-- SVG QR Matrix -->
+            <div class="cert-qr-box">
+              <svg width="68" height="68" viewBox="0 0 24 24" fill="#0F172A" aria-label="QR Code">
+                <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm10-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm14 0h4v4h-4v-4zm-4 4h4v4h-4v-4zm4-4h4v-4h-4v4zm-4-4h-4v4h4v-4zm-6 2h2v2h-2v-2zm8-8h2v2h-2V6zm-8 4h2v2h-2v-2zm4 4h2v2h-2v-2z"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="my-4 text-center">
+            <span class="text-secondary small text-uppercase font-mono">Issued to</span>
+            <h2 class="display-6 fw-bold my-1" id="certDisplayName" style="color: #4F46E5;">Alex Mercer</h2>
+            <p class="small text-secondary mb-0">For demonstrating verified competency in Senior Web Architecture, Real-Time Audio Compilers, and WebGL Shaders.</p>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center pt-3 border-top small text-muted font-mono flex-wrap gap-2">
+            <span>SHA-256: <code class="text-dark" id="certHashText">0x7f9a...8842</code></span>
+            <span>Date: Sept 2026 • Verified by EduSphere Labs</span>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <div class="d-flex gap-2">
+            <button class="btn btn-sm btn-outline-secondary rounded-pill px-3" id="copyCertHashBtn">
+              <i class="bi bi-copy me-1"></i> Copy On-Chain ID
+            </button>
+            <button class="btn btn-sm btn-outline-primary rounded-pill px-3" id="shareLinkedInBtn">
+              <i class="bi bi-linkedin me-1"></i> Add to LinkedIn
+            </button>
+          </div>
+          <span class="text-success small font-mono fw-bold" id="certActionStatus"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Streamlined Clean Editorial Footer (Zero Bloat) -->
+  <footer class="footer-editorial-edu">
+    <div class="edu-container">
+      <div class="row g-4 mb-4 align-items-start">
+        <!-- Column 1: Brand & Live Engine Telemetry -->
+        <div class="col-lg-5">
+          <a href="#hero" class="d-flex align-items-center gap-2 text-dark text-decoration-none fw-bold fs-5 mb-3">
+            <div class="p-2 rounded-3 text-white d-flex align-items-center justify-content-center" style="width: 34px; height: 34px; background: #4F46E5 !important;">
+              <i class="bi bi-mortarboard-fill"></i>
+            </div>
+            <span>Edu<span style="color: #4F46E5;">Sphere</span></span>
+          </a>
+          <p class="text-secondary small mb-3 pe-lg-4" style="line-height: 1.6;">
+            Senior engineering masterclasses, interactive client-side sandboxes, and cryptographic credentials built for staff frontend developers.
+          </p>
+
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill text-primary small fw-semibold" style="background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.2);">
+              <span style="width: 7px; height: 7px; background: #4F46E5; border-radius: 50%; display: inline-block;"></span>
+              <span>WASM v3.2 Active</span>
+            </div>
+            <span class="text-secondary font-mono small" id="footerSfClock">🕒 SF Studio: --:--:-- PST</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Streamlined Navigation -->
+        <div class="col-6 col-lg-3 offset-lg-1">
+          <h4 class="h6 fw-bold text-dark mb-3 text-uppercase font-mono" style="font-size: 0.75rem; letter-spacing: 0.05em;">Curriculum & Labs</h4>
+          <ul class="list-unstyled small d-flex flex-column gap-2 text-secondary">
+            <li><a href="#sandbox" class="text-secondary text-decoration-none link-underglow">Live CSS/WebGL Sandbox</a></li>
+            <li><a href="#dashboard" class="text-secondary text-decoration-none link-underglow">Competency Rings</a></li>
+            <li><a href="#benchmark" class="text-secondary text-decoration-none link-underglow">Tech Stack Benchmark</a></li>
+            <li><a href="#mentors" class="text-secondary text-decoration-none link-underglow">Mentor Peer Reviews</a></li>
+            <li><a href="#terminalLab" class="text-secondary text-decoration-none link-underglow">WASM CLI Terminal</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Architecture Brief Newsletter -->
+        <div class="col-lg-3">
+          <h4 class="h6 fw-bold text-dark mb-2 text-uppercase font-mono" style="font-size: 0.75rem; letter-spacing: 0.05em;">Architecture Brief</h4>
+          <p class="small text-secondary mb-3">Weekly deep-dives into web performance and rendering pipelines:</p>
+          <form class="newsletter-pill-form-edu" id="footerEduForm" onsubmit="event.preventDefault();">
+            <input type="email" id="footerEduEmail" class="newsletter-pill-input-edu" placeholder="architect@tech.io" required aria-label="Email address for architecture brief">
+            <button type="submit" class="newsletter-pill-submit-edu" id="footerEduBtn">Join</button>
+          </form>
+          <span class="text-success small font-mono mt-2 d-block" id="footerEduStatus"></span>
+        </div>
+      </div>
+
+      <div class="pt-3 border-top d-flex flex-column flex-md-row justify-content-between align-items-center text-secondary small">
+        <p class="mb-0">© 2026 EduSphere Technologies Ltd. All rights reserved.</p>
+        <div class="d-flex gap-3 mt-2 mt-md-0">
+          <span class="text-muted">Verified Credential Registry</span>
+          <span>•</span>
+          <span class="text-muted">Silicon Valley & London</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseWave Festival 2026 — 3 Days of Electronic Music & Spatial Visuals</title>
+  <meta name="description" content="PulseWave 2026: 3 stages, 45+ headliners, interactive amphitheater sightline map, and Passbook ticket customization.">
+
+  <!-- Google Fonts: Syne & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Bespoke Cyber Floating Island Navbar with Laser Sliding Indicator & Mobile Drawer -->
+  <header>
+    <nav class="navbar-pulse d-flex justify-content-between align-items-center" aria-label="Main Navigation">
+      <a href="#hero" class="d-flex align-items-center gap-2 text-white text-decoration-none fw-bold fs-4">
+        <div class="p-2 rounded bg-danger d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+          <i class="bi bi-soundwave text-white"></i>
+        </div>
+        <span>Pulse<span class="gradient-fire-text">Wave '26</span></span>
+      </a>
+
+      <div class="nav-pulse-wrapper d-none d-lg-flex">
+        <div class="nav-laser-pill" id="navLaserPill"></div>
+        <ul class="nav-links-pulse" id="navLinksPulse">
+          <li><a href="#lineup" class="active">Lineup (45)</a></li>
+          <li><a href="#stagemap">Sightlines</a></li>
+          <li><a href="#passbook">Passbook RFID</a></li>
+          <li><a href="#tickets">Pass Tiers</a></li>
+          <li><a href="#experience">Atmosphere</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <a href="#tickets" class="btn-fire d-none d-sm-inline-flex">
+          <span>Get Passes</span>
+          <i class="bi bi-ticket-perforated"></i>
+        </a>
+
+        <button class="mobile-pulse-toggle d-lg-none" id="mobilePulseToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileDrawerPulse">
+          <i class="bi bi-list fs-3"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Full-Screen Cyberpunk Mobile Drawer -->
+    <div class="mobile-drawer-pulse" id="mobileDrawerPulse" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="#hero" class="d-flex align-items-center gap-2 text-white text-decoration-none fw-bold fs-4">
+          <div class="p-2 rounded bg-danger d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+            <i class="bi bi-soundwave text-white"></i>
+          </div>
+          <span>Pulse<span class="gradient-fire-text">Wave '26</span></span>
+        </a>
+        <button class="mobile-pulse-toggle" id="mobilePulseClose" aria-label="Close navigation menu">
+          <i class="bi bi-x-lg fs-4"></i>
+        </button>
+      </div>
+
+      <ul class="mobile-drawer-pulse-links">
+        <li><a href="#lineup">01. LINEUP EXPLORER</a></li>
+        <li><a href="#stagemap">02. VENUE SIGHTLINES</a></li>
+        <li><a href="#passbook">03. PASSBOOK WRISTBAND</a></li>
+        <li><a href="#tickets">04. PASS TIERS & CART</a></li>
+        <li><a href="#experience">05. 360° DOME EXPERIENCE</a></li>
+        <li><a href="#faq">06. FESTIVAL FAQ</a></li>
+      </ul>
+
+      <div class="d-flex flex-column gap-2">
+        <a href="#tickets" class="btn-fire justify-content-center py-3">
+          <span>SECURE PASSES NOW</span>
+          <i class="bi bi-lightning-charge-fill"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- 1. Hero Section with Live Countdown -->
+    <section class="py-5" id="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7">
+            <span class="badge bg-danger rounded-pill px-3 py-2 fw-bold mb-3">OCTOBER 24-26 • NEO TOKYO ARENA</span>
+            <h1 class="display-3 font-display text-white mb-3">
+              WHERE SOUND MEETS <br>
+              <span class="gradient-fire-text">PURE LIGHT SPECTRUM.</span>
+            </h1>
+
+            <p class="lead text-secondary mb-4">
+              45+ world-class electronic headliners across 3 massive holographic stages with 360° laser domes.
+            </p>
+
+            <!-- Countdown Timer -->
+            <div class="d-flex gap-3 mb-4">
+              <div class="p-3 bg-dark border border-secondary rounded text-center" style="min-width: 80px;">
+                <div class="h2 text-white fw-bold mb-0" id="countDays">64</div>
+                <small class="text-secondary font-mono">Days</small>
+              </div>
+              <div class="p-3 bg-dark border border-secondary rounded text-center" style="min-width: 80px;">
+                <div class="h2 text-white fw-bold mb-0" id="countHours">14</div>
+                <small class="text-secondary font-mono">Hours</small>
+              </div>
+              <div class="p-3 bg-dark border border-secondary rounded text-center" style="min-width: 80px;">
+                <div class="h2 text-white fw-bold mb-0" id="countMins">32</div>
+                <small class="text-secondary font-mono">Mins</small>
+              </div>
+              <div class="p-3 bg-dark border border-secondary rounded text-center" style="min-width: 80px;">
+                <div class="h2 text-danger fw-bold mb-0" id="countSecs">48</div>
+                <small class="text-secondary font-mono">Secs</small>
+              </div>
+            </div>
+
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="#tickets" class="btn-fire fs-5 px-4 py-3"><i class="bi bi-lightning-charge-fill"></i> Secure Passes</a>
+              <a href="#stagemap" class="btn btn-outline-light rounded-pill px-4 py-3 fs-5"><i class="bi bi-geo-alt"></i> Stage Map</a>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="p-4 bg-dark border border-secondary rounded-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-primary px-3 py-2 fw-bold">QUANTUM MAIN STAGE</span>
+                <small class="text-warning fw-bold">🔥 94% SOLD</small>
+              </div>
+              <h2 class="h4 font-display text-white mb-2">KRONOS & THE CYBER VOID</h2>
+              <p class="small text-secondary mb-3">Exclusive 3-hour live hybrid spatial synth set featuring 120,000W sub-bass arrays.</p>
+              <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary">
+                <span class="text-secondary small">Headlining Friday 23:00</span>
+                <div class="d-flex gap-2">
+                  <button id="playDjPreviewBtn" class="btn btn-sm btn-outline-warning rounded-pill px-3">
+                    <i class="bi bi-play-fill me-1"></i> Preview Stage Drop
+                  </button>
+                  <a href="#tickets" class="btn btn-sm btn-outline-light rounded-pill px-3">Reserve Stage Spot</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Interactive 2D Amphitheater Stage Sightline Map -->
+    <section class="py-5" id="stagemap">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="text-uppercase fw-bold text-danger small">Venue Architecture</span>
+          <h2 class="display-6 font-display text-white mb-2">Interactive Amphitheater Sightlines</h2>
+          <p class="text-secondary">Click any stage sector to preview acoustic angles and VIP sightlines.</p>
+        </div>
+
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-7">
+            <svg viewBox="0 0 600 380" class="stage-map-svg">
+              <rect x="220" y="20" width="160" height="40" rx="8" fill="#FF6B00" />
+              <text x="300" y="45" fill="#fff" font-family="Syne" font-weight="bold" font-size="13" text-anchor="middle">MAIN DJ STAGE</text>
+
+              <path d="M 180 80 Q 300 130 420 80 L 450 140 Q 300 200 150 140 Z" fill="#8B5CF6" fill-opacity="0.4" stroke="#8B5CF6" stroke-width="2" class="stage-zone-sector active" data-zone="pit" />
+              <text x="300" y="130" fill="#fff" font-family="Space Grotesk" font-size="12" font-weight="bold" text-anchor="middle">FRONT MOSH PIT</text>
+
+              <path d="M 80 80 L 140 100 L 110 180 L 50 150 Z" fill="#F59E0B" fill-opacity="0.4" stroke="#F59E0B" stroke-width="2" class="stage-zone-sector" data-zone="vip" />
+              <text x="95" y="135" fill="#fff" font-family="Space Grotesk" font-size="11" font-weight="bold" text-anchor="middle">VIP DECK</text>
+
+              <path d="M 520 80 L 460 100 L 490 180 L 550 150 Z" fill="#F59E0B" fill-opacity="0.4" stroke="#F59E0B" stroke-width="2" class="stage-zone-sector" data-zone="vip" />
+              <text x="505" y="135" fill="#fff" font-family="Space Grotesk" font-size="11" font-weight="bold" text-anchor="middle">VIP DECK</text>
+
+              <rect x="200" y="70" width="200" height="25" rx="4" fill="#EC4899" fill-opacity="0.4" stroke="#EC4899" stroke-width="1.5" class="stage-zone-sector" data-zone="backstage" />
+              <text x="300" y="87" fill="#fff" font-family="Space Grotesk" font-size="10" font-weight="bold" text-anchor="middle">ARTIST BACKSTAGE</text>
+
+              <path d="M 120 180 Q 300 270 480 180 L 520 280 Q 300 370 80 280 Z" fill="#06B6D4" fill-opacity="0.3" stroke="#06B6D4" stroke-width="2" class="stage-zone-sector" data-zone="lawn" />
+              <text x="300" y="270" fill="#fff" font-family="Space Grotesk" font-size="13" font-weight="bold" text-anchor="middle">GENERAL ADMISSION ARENA</text>
+            </svg>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="p-4 bg-dark border border-secondary rounded-4">
+              <span class="badge bg-warning text-dark fw-bold mb-2">SECTOR INSPECTOR</span>
+              <h3 class="h4 font-display text-white mb-2" id="selectedZoneName">Front Stage Mosh Pit</h3>
+              <div class="mb-3">
+                <small class="text-secondary d-block">Sightline Angle:</small>
+                <strong class="text-info font-mono" id="selectedZoneSightline">100% Direct Frontal (5 meters from DJ)</strong>
+              </div>
+              <div class="mb-4">
+                <small class="text-secondary d-block">Acoustics & Perks:</small>
+                <p class="small text-white mb-0" id="selectedZonePerks">High-intensity sub-bass & cryogenic blast direct zone.</p>
+              </div>
+              <a href="#tickets" class="btn-fire w-100 justify-content-center">Reserve in this Sector</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Lineup Schedule Explorer -->
+    <section class="py-5" id="lineup">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="text-uppercase fw-bold text-danger small">Artist Roster</span>
+          <h2 class="display-6 font-display text-white mb-2">Phase 01 Headliners</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-6 col-md-3">
+            <div class="p-3 bg-dark border border-secondary rounded-4 text-center">
+              <div class="h5 font-display text-white mb-1">NEON MIRAGE</div>
+              <small class="text-danger font-mono d-block mb-2">Quantum Stage • Fri 22:00</small>
+              <span class="badge bg-secondary">Synthwave / Melodic</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="p-3 bg-dark border border-secondary rounded-4 text-center">
+              <div class="h5 font-display text-white mb-1">HELIX 9</div>
+              <small class="text-warning font-mono d-block mb-2">Cyber Dome • Sat 01:30</small>
+              <span class="badge bg-secondary">Acid Techno / 145BPM</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="p-3 bg-dark border border-secondary rounded-4 text-center">
+              <div class="h5 font-display text-white mb-1">VOID WALKER</div>
+              <small class="text-info font-mono d-block mb-2">Sub-Bass • Sun 00:00</small>
+              <span class="badge bg-secondary">Dubstep / Heavy Bass</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="p-3 bg-dark border border-secondary rounded-4 text-center">
+              <div class="h5 font-display text-white mb-1">SOLAR ECLIPSE</div>
+              <small class="text-danger font-mono d-block mb-2">Quantum Stage • Sat 23:00</small>
+              <span class="badge bg-secondary">Trance / Progressive</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Passbook Apple Wallet 3D Ticket Flip Card -->
+    <section class="py-5" id="passbook">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="text-uppercase fw-bold text-warning small">Digital Credential</span>
+          <h2 class="display-6 font-display text-white mb-2">Passbook Ticket Generator</h2>
+          <p class="text-secondary">Type your name to customize and flip your official RFID wristband pass.</p>
+        </div>
+
+        <div class="row g-4 align-items-center justify-content-center">
+          <div class="col-md-5">
+            <div class="p-4 bg-dark border border-secondary rounded-4 mb-3">
+              <label class="form-label small text-secondary">Attendee Full Name:</label>
+              <input type="text" id="ticketAttendeeInput" class="form-control bg-dark text-white border-secondary font-mono" value="ALEX MERCER">
+              <div class="d-flex gap-2 mt-3">
+                <button class="btn btn-outline-light flex-grow-1 rounded-pill" id="flipTicketBtn">
+                  <i class="bi bi-arrow-repeat me-1"></i> Flip Ticket
+                </button>
+                <button class="btn btn-fire flex-grow-1 rounded-pill" id="saveWalletBtn">
+                  <i class="bi bi-wallet me-1"></i> Save to Wallet
+                </button>
+              </div>
+              <div id="walletToastAlert" class="alert alert-success mt-3 py-2 small mb-0" style="display:none;">
+                <i class="bi bi-check-circle-fill me-1"></i> Pass #PW-2026-99482 added to Digital Wallet!
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <div class="passbook-flip-container">
+              <div class="passbook-card" id="passbookCard">
+                <div class="passbook-notch-left"></div>
+                <div class="passbook-notch-right"></div>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="h5 font-display text-white mb-0">PULSEWAVE '26</span>
+                  <span class="badge bg-danger">VIP PASS</span>
+                </div>
+
+                <div class="my-3">
+                  <small class="text-secondary font-mono d-block">ATTENDEE NAME</small>
+                  <h3 class="h4 font-display text-warning mb-0" id="passbookAttendeeName">ALEX MERCER</h3>
+                  <small class="text-secondary font-mono">SECTOR: VIP SKY DECK • GATE 4</small>
+                </div>
+
+                <div class="passbook-barcode">
+                  <div class="barcode-lines"></div>
+                  <small class="text-dark font-mono fw-bold">#PW-2026-99482-VIP</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Pass Tiers & Live Subtotal Cart Calculator -->
+    <section class="py-5" id="tickets">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="text-uppercase fw-bold text-danger small">Pass Checkout</span>
+          <h2 class="display-6 font-display text-white mb-2">Official Pass Tiers & Cart</h2>
+          <p class="text-secondary">Select your tier to view real-time subtotal with zero hidden fees.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-4">
+            <div class="ticket-tier-card p-4 bg-dark border border-secondary rounded-4 h-100" data-price="189">
+              <h3 class="h4 font-display text-white">GA 3-Day</h3>
+              <div class="h2 text-white font-mono my-3">$189</div>
+              <p class="small text-secondary mb-0">All 3 stages access, laser visual alleys, and general admission amphitheater.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="ticket-tier-card selected p-4 bg-dark border border-warning rounded-4 h-100" data-price="349">
+              <span class="badge bg-warning text-dark fw-bold mb-2">RECOMMENDED</span>
+              <h3 class="h4 font-display text-white">VIP Sky Deck</h3>
+              <div class="h2 text-warning font-mono my-3">$349</div>
+              <p class="small text-secondary mb-0">Elevated stage deck, fast-track RFID wristband, private bar & luxury air-conditioned lounges.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-4 bg-dark border border-secondary rounded-4 h-100 d-flex flex-column justify-content-between">
+              <div>
+                <h4 class="h5 font-display text-white mb-3"><i class="bi bi-bag-check text-warning me-2"></i> Order Summary</h4>
+                <div class="d-flex justify-content-between text-secondary small mb-2">
+                  <span>Pass Tier Subtotal:</span>
+                  <strong class="text-white font-mono" id="summarySubtotal">$698</strong>
+                </div>
+                <div class="d-flex justify-content-between text-secondary small mb-2">
+                  <span>Facility Fee & Tax (8%):</span>
+                  <span class="text-secondary font-mono" id="summaryTax">$56</span>
+                </div>
+                <div class="d-flex justify-content-between text-white border-top border-secondary pt-2 mt-2">
+                  <span class="fw-bold">Total (USD):</span>
+                  <strong class="h4 text-warning font-mono mb-0" id="summaryTotal">$754</strong>
+                </div>
+              </div>
+              <button class="btn-fire w-100 justify-content-center mt-4">
+                <span>Proceed to Instant Checkout</span>
+                <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Festival Experience Bento Grid -->
+    <section class="py-5" id="experience">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="text-uppercase fw-bold text-danger small">The Atmosphere</span>
+          <h2 class="display-6 font-display text-white mb-2">Beyond the Main Stage</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="p-4 bg-dark border border-secondary rounded-4 h-100">
+              <i class="bi bi-broadcast text-danger fs-1 mb-2"></i>
+              <h3 class="h5 font-display text-white">360° Holographic Dome</h3>
+              <p class="small text-secondary mb-0">Immerse yourself inside a 40-meter geodesic dome projecting real-time generative audio visuals.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 bg-dark border border-secondary rounded-4 h-100">
+              <i class="bi bi-wallet2 text-warning fs-1 mb-2"></i>
+              <h3 class="h5 font-display text-white">100% Cashless RFID Wristbands</h3>
+              <p class="small text-secondary mb-0">Instant tap-to-pay for craft food trucks and cocktails. Remaining balances auto-refunded post-festival.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 bg-dark border border-secondary rounded-4 h-100">
+              <i class="bi bi-droplet-half text-info fs-1 mb-2"></i>
+              <h3 class="h5 font-display text-white">Free Hydration & Sanctuary Oasis</h3>
+              <p class="small text-secondary mb-0">Filtered chilled water stations and shaded ambient chillout zones across every stage sector.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Festival FAQ -->
+    <section class="py-5" id="faq">
+      <div class="container" style="max-width: 800px;">
+        <div class="text-center mb-5">
+          <h2 class="display-6 font-display text-white mb-2">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="accordion" id="festFaq">
+          <div class="accordion-item bg-dark border border-secondary rounded-3 mb-2">
+            <h3 class="accordion-header">
+              <button class="accordion-button bg-dark text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#fq1">
+                What is the age requirement for PulseWave?
+              </button>
+            </h3>
+            <div id="fq1" class="accordion-collapse collapse show" data-bs-parent="#festFaq">
+              <div class="accordion-body text-secondary small">
+                PulseWave is an 18+ event for General Admission and 21+ for VIP Sky Deck and Backstage pass holders. Valid government photo ID is strictly required at check-in.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item bg-dark border border-secondary rounded-3 mb-2">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#fq2">
+                Can I transfer or resell my digital ticket?
+              </button>
+            </h3>
+            <div id="fq2" class="accordion-collapse collapse" data-bs-parent="#festFaq">
+              <div class="accordion-body text-secondary small">
+                Yes! Official digital pass transfers are free up to 48 hours prior to gates opening via our official Passbook portal.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bespoke Asymmetric Festival Stage Footer -->
+  <footer class="footer-editorial-pulse">
+    <div class="container">
+      <div class="row g-5 mb-5 align-items-start">
+        <div class="col-lg-5">
+          <a href="#hero" class="d-flex align-items-center gap-2 text-white text-decoration-none fw-bold fs-4 mb-3">
+            <div class="p-2 rounded bg-danger d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+              <i class="bi bi-soundwave text-white"></i>
+            </div>
+            <span>Pulse<span class="gradient-fire-text">Wave '26</span></span>
+          </a>
+          <p class="text-secondary small mb-4 pe-lg-4">
+            The world's premier 3-day electronic music & holographic spatial audio summit. 3 stages, 45+ headliners, and 120,000W sub-bass arrays.
+          </p>
+
+          <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
+            <div class="footer-db-meter">
+              <i class="bi bi-broadcast"></i>
+              <span>MAIN STAGE AUDIO: 118.4 dB NOMINAL</span>
+            </div>
+            <div class="text-secondary font-mono small" id="footerTokyoClock">
+              🕒 TOKYO ARENA TIME: --:--:--
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3 offset-lg-1">
+          <h4 class="h6 font-display text-white mb-3 text-uppercase">Festival Navigation</h4>
+          <ul class="list-unstyled small d-flex flex-column gap-2 text-secondary font-mono">
+            <li><a href="#lineup" class="text-secondary text-decoration-none">Phase 01 Headliners</a></li>
+            <li><a href="#stagemap" class="text-secondary text-decoration-none">2D Amphitheater Map</a></li>
+            <li><a href="#passbook" class="text-secondary text-decoration-none">Digital Wallet Passbook</a></li>
+            <li><a href="#tickets" class="text-secondary text-decoration-none">Pass Tiers & Cart</a></li>
+            <li><a href="#experience" class="text-secondary text-decoration-none">360° Holographic Dome</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h4 class="h6 font-display text-white mb-3 text-uppercase">Phase 02 Lineup Drops</h4>
+          <p class="small text-secondary mb-2">Be the first to receive secret back-to-back DJ announcements:</p>
+          <div class="d-flex gap-2">
+            <input type="email" id="footerPulseEmail" class="form-control form-control-sm bg-dark text-white border-secondary font-mono" placeholder="Enter email...">
+            <button class="btn btn-sm btn-fire" id="footerPulseBtn">Join</button>
+          </div>
+          <span class="text-warning small font-mono mt-1 d-block" id="footerPulseStatus"></span>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-secondary d-flex flex-column flex-md-row justify-content-between align-items-center text-secondary small font-mono">
+        <p class="mb-0">© 2026 PulseWave Live Inc. Crafted with Pure Vanilla HTML5, CSS3 & JavaScript.</p>
+        <div class="d-flex gap-3 mt-2 mt-md-0">
+          <span>RFID Passbook Verified</span>
+          <span>•</span>
+          <span>Tokyo Arena Safety Standard</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

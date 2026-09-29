@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuraCalm — Science-Backed Mindfulness, Breathwork & Circadian Sleep Architecture</title>
+  <meta name="description" content="AuraCalm is a digital wellness sanctuary featuring fluid morphing breathwork, synthesized ambient soundscapes, REM sleep optimization, and daily meditation timers.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="circadian-dawn">
+
+  <div class="ambient-mesh" aria-hidden="true">
+    <div class="mesh-blob mesh-blob-1"></div>
+    <div class="mesh-blob mesh-blob-2"></div>
+    <div class="mesh-blob mesh-blob-3"></div>
+  </div>
+  <canvas id="circadianCanvas" class="circadian-canvas" aria-hidden="true"></canvas>
+
+  <!-- Floating Island Navbar -->
+  <header>
+    <nav class="navbar-floating-dock d-flex justify-content-between align-items-center" aria-label="Main Navigation">
+      <a href="#hero" class="brand-aura">
+        <div class="brand-icon-aura"><i class="bi bi-flower1"></i></div>
+        <span>Aura<span class="gradient-text">Calm</span></span>
+      </a>
+
+      <div class="nav-links-wrapper d-none d-lg-flex">
+        <div class="nav-sliding-pill" id="navSlidingPill"></div>
+        <ul class="nav-links-aura" id="navLinksAura">
+          <li><a href="#soundscapes" class="active">Soundscapes</a></li>
+          <li><a href="#sleep-lab">Sleep</a></li>
+          <li><a href="#timer">Meditation</a></li>
+          <li><a href="#faq">Science</a></li>
+        </ul>
+      </div>
+
+      <div class="d-flex align-items-center gap-3">
+        <div id="navbarAudioPill" class="navbar-audio-pill">
+          <i class="bi bi-soundwave"></i>
+          <span>PLAYING</span>
+          <button id="navbarQuickMuteBtn" class="btn btn-sm btn-link text-muted p-0 ms-1" title="Mute all audio" aria-label="Mute all audio"><i class="bi bi-x-circle-fill"></i></button>
+        </div>
+
+        <a href="#assessment" data-open-modal="assessmentModal" class="btn-solid-dark d-none d-sm-inline-flex">
+          <span>Start Sanctuary</span>
+          <i class="bi bi-arrow-right-short fs-5"></i>
+        </a>
+
+        <button class="mobile-nav-toggle d-lg-none" id="mobileNavToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileDrawerAura">
+          <i class="bi bi-list fs-3"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer-aura" id="mobileDrawerAura" role="dialog" aria-modal="true" aria-label="Mobile Navigation Drawer">
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="#hero" class="brand-aura">
+          <div class="brand-icon-aura"><i class="bi bi-flower1"></i></div>
+          <span>Aura<span class="gradient-text">Calm</span></span>
+        </a>
+        <button class="mobile-nav-toggle" id="mobileNavClose" aria-label="Close navigation menu">
+          <i class="bi bi-x-lg fs-4"></i>
+        </button>
+      </div>
+
+      <ul class="mobile-drawer-links">
+        <li><a href="#soundscapes">01. Sound Studio</a></li>
+        <li><a href="#sleep-lab">02. Sleep Architecture</a></li>
+        <li><a href="#timer">03. Meditation Timer</a></li>
+        <li><a href="#faq">04. Neuroscience FAQ</a></li>
+      </ul>
+
+      <div class="d-flex flex-column gap-2">
+        <a href="#assessment" data-open-modal="assessmentModal" class="btn-solid-dark justify-content-center py-3">
+          <span>Start Calm Protocol</span>
+          <i class="bi bi-arrow-right-short fs-5"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- 1. Hero Section & Morphing Breathwork -->
+    <section class="section-rhythm pt-3" id="hero">
+      <div class="container">
+        <!-- Circadian Ambiance Selector -->
+        <div class="text-center mb-5 reveal-on-scroll">
+          <div class="circadian-pill-bar">
+            <span class="small text-muted fw-bold me-2"><i class="bi bi-sun"></i> Ambiance:</span>
+            <button class="circadian-btn active" data-time="dawn">🌅 Dawn Mist</button>
+            <button class="circadian-btn" data-time="noon">☀️ Solar Noon</button>
+            <button class="circadian-btn" data-time="twilight">🌇 Twilight Rose</button>
+            <button class="circadian-btn" data-time="midnight">🌌 Midnight Starlight</button>
+          </div>
+        </div>
+
+        <div class="row align-items-center justify-content-between g-5">
+          <div class="col-lg-6 reveal-on-scroll">
+            <span class="eyebrow-label">
+              <span style="width: 8px; height: 8px; background: #10B981; border-radius: 50%; display: inline-block;"></span>
+              Neuroscience-Backed Parasympathetic Reset
+            </span>
+            
+            <h1 class="display-4 serif-heading mb-3 fw-bold">
+              Stillness for the Mind. <br>
+              <span class="gradient-text">Master Your Inner Rhythm.</span>
+            </h1>
+
+            <p class="lead text-secondary mb-4" style="font-size: 1.15rem; line-height: 1.7;">
+              Step into an adaptive digital sanctuary. Experience fluid morphing breathwork, real-time synthesized audio waveforms, and precision REM sleep optimization.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3 align-items-center mb-5">
+              <a href="#breathing" class="btn-solid-dark"><i class="bi bi-wind"></i> Guided Breathwork</a>
+              <a href="#soundscapes" class="btn-outline-pill"><i class="bi bi-soundwave"></i> Sound Studio</a>
+            </div>
+
+            <div class="d-flex gap-4 small text-muted border-top pt-4">
+              <span><strong class="text-dark">1.4M+</strong> Mindful Minutes</span>
+              <span><strong class="text-dark">-38%</strong> Salivary Cortisol</span>
+              <span><strong class="text-dark">4.9/5</strong> Member Rating</span>
+            </div>
+          </div>
+
+          <!-- Morphing Breathwork Stage -->
+          <div class="col-lg-5 reveal-on-scroll" id="breathing">
+            <div class="glass-card p-4 p-md-5 text-center">
+              <span class="eyebrow-label justify-content-center">Interactive Breath Coach</span>
+              <h2 class="h4 serif-heading fw-bold mb-1 text-dark">Fluid Guided Breathwork</h2>
+              <p class="small text-muted mb-4">Synchronize your lungs with the fluid pulse</p>
+
+              <div class="segmented-control mb-4">
+                <button class="segmented-control-btn active mode-btn" data-mode="box">Box (4-4-4-4)</button>
+                <button class="segmented-control-btn mode-btn" data-mode="relax">4-7-8 Relax</button>
+                <button class="segmented-control-btn mode-btn" data-mode="calm">Deep Calm</button>
+              </div>
+
+              <div class="breathing-orb-wrapper">
+                <div class="radial-pulse-glow" id="radialPulseGlow"></div>
+                <svg viewBox="0 0 200 200" class="morph-svg" id="morphingSvg">
+                  <defs>
+                    <linearGradient id="auraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#4F46E5" />
+                      <stop offset="50%" stop-color="#7C3AED" />
+                      <stop offset="100%" stop-color="#EC4899" />
+                    </linearGradient>
+                  </defs>
+                  <path fill="url(#auraGrad)" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C86.9,14.6,81.2,29.1,72.7,41.4C64.2,53.6,52.8,63.5,39.8,70.8C26.8,78,13.4,82.5,-0.6,83.5C-14.5,84.5,-29,82,-42.2,75.1C-55.4,68.2,-67.2,56.9,-75.4,43.2C-83.6,29.6,-88.1,14.8,-87.3,0.5C-86.4,-13.9,-80.1,-27.7,-71.4,-39.8C-62.7,-51.8,-51.5,-62.1,-38.7,-69.8C-25.9,-77.5,-12.9,-82.7,0.9,-84.2C14.8,-85.7,29.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
+                </svg>
+
+                <div class="morph-blob-content text-center">
+                  <span class="d-block h6 fw-bold mb-0 text-white" id="orbStateLabel">Ready</span>
+                  <span class="d-block display-5 fw-bold text-white font-mono" id="orbCountdown">4s</span>
+                </div>
+              </div>
+
+              <button class="btn-solid-dark mx-auto justify-content-center" id="breatheToggleBtn" aria-label="Toggle breathwork session">
+                <i class="bi bi-play-fill fs-5"></i>
+                <span id="breatheToggleText">Start Session</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Synthesized Soundscapes Studio with Binaural Synthesizer & Visualizer Sliders -->
+    <section class="section-rhythm" id="soundscapes">
+      <div class="container">
+        <div class="text-center mb-5 reveal-on-scroll">
+          <span class="eyebrow-label"><i class="bi bi-headphones"></i> Web Audio Harmonic Synthesizer</span>
+          <h2 class="display-6 serif-heading fw-bold">Ambient Soundscape Studio</h2>
+          <p class="text-muted" style="max-width: 600px; margin: 0 auto;">Layer and blend real-time synthesized acoustic environments with mathematical precision and zero audio drops.</p>
+
+          <div class="d-flex justify-content-center gap-2 flex-wrap mt-4">
+            <span class="small text-muted fw-bold align-self-center me-2">Quick Presets:</span>
+            <div class="segmented-control">
+              <button class="segmented-control-btn active preset-sound-btn" data-preset="sleep">🌙 Deep REM</button>
+              <button class="segmented-control-btn preset-sound-btn" data-preset="anxiety">🌿 Vagus Reset</button>
+              <button class="segmented-control-btn preset-sound-btn" data-preset="focus">⚡ Deep Work</button>
+              <button class="segmented-control-btn preset-sound-btn" data-preset="zen">🧘 Zen Flow</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3 reveal-on-scroll">
+            <div class="soundscape-card glass-card h-100" data-sound="rain">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h3 class="h6 fw-bold mb-0 text-dark">Nordic Rain</h3>
+                  <i class="bi bi-cloud-drizzle fs-4 text-primary"></i>
+                </div>
+                <p class="small text-muted mb-2">Filtered pink noise for deep cognitive focus.</p>
+                <canvas class="waveform-canvas" data-sound="rain" width="200" height="38"></canvas>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                  <small class="text-muted">Volume</small>
+                  <small class="text-dark font-monospace fw-bold volume-val">70%</small>
+                </div>
+                <input type="range" class="volume-slider" min="0" max="100" value="70" data-sound="rain" aria-label="Nordic Rain volume">
+              </div>
+              <button class="btn-outline-pill w-100 justify-content-center mt-3 sound-toggle-btn">Enable Track</button>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 reveal-on-scroll">
+            <div class="soundscape-card glass-card h-100" data-sound="ocean">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h3 class="h6 fw-bold mb-0 text-dark">Pacific Swell</h3>
+                  <i class="bi bi-water fs-4 text-success"></i>
+                </div>
+                <p class="small text-muted mb-2">Resonant wave surge modulation for grounding.</p>
+                <canvas class="waveform-canvas" data-sound="ocean" width="200" height="38"></canvas>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                  <small class="text-muted">Volume</small>
+                  <small class="text-dark font-monospace fw-bold volume-val">70%</small>
+                </div>
+                <input type="range" class="volume-slider" min="0" max="100" value="70" data-sound="ocean" aria-label="Pacific Swell volume">
+              </div>
+              <button class="btn-outline-pill w-100 justify-content-center mt-3 sound-toggle-btn">Enable Track</button>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 reveal-on-scroll">
+            <div class="soundscape-card glass-card h-100" data-sound="chimes">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h3 class="h6 fw-bold mb-0 text-dark">Crystal Bells</h3>
+                  <i class="bi bi-bell fs-4 text-warning"></i>
+                </div>
+                <p class="small text-muted mb-2">Pentatonic crystal harmonics in 528Hz scale.</p>
+                <canvas class="waveform-canvas" data-sound="chimes" width="200" height="38"></canvas>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                  <small class="text-muted">Volume</small>
+                  <small class="text-dark font-monospace fw-bold volume-val">70%</small>
+                </div>
+                <input type="range" class="volume-slider" min="0" max="100" value="70" data-sound="chimes" aria-label="Crystal Bells volume">
+              </div>
+              <button class="btn-outline-pill w-100 justify-content-center mt-3 sound-toggle-btn">Enable Track</button>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 reveal-on-scroll">
+            <div class="soundscape-card glass-card h-100" data-sound="binaural">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h3 class="h6 fw-bold mb-0 text-dark">432Hz Theta</h3>
+                  <i class="bi bi-infinity fs-4 text-info"></i>
+                </div>
+                <p class="small text-muted mb-2">Dual-frequency theta sync for rapid REM entry.</p>
+                <canvas class="waveform-canvas" data-sound="binaural" width="200" height="38"></canvas>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                  <small class="text-muted">Volume</small>
+                  <small class="text-dark font-monospace fw-bold volume-val">70%</small>
+                </div>
+                <input type="range" class="volume-slider" min="0" max="100" value="70" data-sound="binaural" aria-label="432Hz Theta volume">
+              </div>
+              <button class="btn-outline-pill w-100 justify-content-center mt-3 sound-toggle-btn">Enable Track</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Binaural Brainwave Synthesizer Stage -->
+        <div class="binaural-synth-box mt-5 reveal-on-scroll">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+              <span class="eyebrow-label"><i class="bi bi-soundwave"></i> Interactive Frequency Dial</span>
+              <h3 class="h5 serif-heading fw-bold text-dark mb-2">Isochronic & Binaural Wave Generator</h3>
+              <p class="small text-muted mb-3">Adjust carrier and beat frequencies to directly modulate brainwave entrainment state.</p>
+              
+              <div class="d-flex gap-2 flex-wrap mb-3">
+                <button class="btn-outline-pill btn-sm wave-preset-btn active" data-hz="2.5" data-wave="Delta (Sleep)">💤 Delta 2.5Hz</button>
+                <button class="btn-outline-pill btn-sm wave-preset-btn" data-hz="6.0" data-wave="Theta (Meditation)">🧘 Theta 6.0Hz</button>
+                <button class="btn-outline-pill btn-sm wave-preset-btn" data-hz="10.0" data-wave="Alpha (Flow)">🌿 Alpha 10.0Hz</button>
+                <button class="btn-outline-pill btn-sm wave-preset-btn" data-hz="40.0" data-wave="Gamma (Focus)">⚡ Gamma 40.0Hz</button>
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <span class="small fw-semibold text-dark">Beat Frequency (<span id="waveLabel">Delta 2.5Hz</span>)</span>
+                  <span class="small font-monospace fw-bold text-primary" id="waveHzDisplay">2.5 Hz</span>
+                </div>
+                <input type="range" class="volume-slider" id="waveHzSlider" min="0.5" max="40" step="0.5" value="2.5" aria-label="Binaural frequency in Hz">
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <canvas id="binauralCanvas" class="binaural-canvas" width="400" height="70"></canvas>
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="small text-muted font-monospace">Harmonic Carrier: <strong class="text-dark">432.0 Hz Solfeggio</strong></div>
+                <button class="btn-solid-dark" id="binauralPlayBtn">
+                  <i class="bi bi-play-fill"></i>
+                  <span>Test Harmonic Pulse</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. REM Sleep Architecture & Interactive Bedtime Chips -->
+    <section class="section-rhythm" id="sleep-lab">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-5 reveal-on-scroll">
+            <span class="eyebrow-label"><i class="bi bi-moon-stars"></i> 90-Minute REM Architecture</span>
+            <h2 class="display-6 serif-heading fw-bold mb-3">Wake Restored, Never Groggy.</h2>
+            <p class="text-secondary mb-4" style="line-height: 1.7;">
+              Human sleep naturally cycles every 90 minutes. Select your intended wake time below — optimal sleep cycles recalculate instantaneously.
+            </p>
+
+            <div class="d-flex align-items-center gap-2 mb-3 flex-wrap">
+              <select class="form-select w-auto bg-white border" id="wakeHourSelect" aria-label="Wake Hour">
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7" selected>07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
+              </select>
+              <span class="fw-bold fs-5 text-muted">:</span>
+              <select class="form-select w-auto bg-white border" id="wakeMinuteSelect" aria-label="Wake Minute">
+                <option value="0" selected>00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+              </select>
+              <select class="form-select w-auto bg-white border" id="wakeAmpmSelect" aria-label="AM or PM">
+                <option value="AM" selected>AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+            <small class="text-muted font-monospace d-block">✓ Auto-calculated with 14m natural sleep latency</small>
+          </div>
+
+          <div class="col-lg-7 reveal-on-scroll">
+            <div class="glass-card p-4 p-md-5">
+              <span class="eyebrow-label">Optimal Cycle Recalculation</span>
+              <h3 class="h4 serif-heading fw-bold mb-1">Recommended Bedtime Cycles</h3>
+              <p class="small text-muted mb-4">Click any cycle chip below to launch your personalized wind-down routine.</p>
+              <div class="row g-3" id="sleepCyclesResult"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Interactive Meditation Timer with Segmented Control -->
+    <section class="section-rhythm" id="timer">
+      <div class="container">
+        <div class="glass-card p-4 p-md-5 text-center reveal-on-scroll" style="max-width: 680px; margin: 0 auto;">
+          <span class="eyebrow-label justify-content-center"><i class="bi bi-stopwatch"></i> Focus & Stillness</span>
+          <h2 class="display-6 serif-heading fw-bold mb-2">Custom Meditation Session</h2>
+          <p class="text-muted mb-4">Choose your interval. A 528Hz Solfeggio crystal chime will guide your entry and exit.</p>
+
+          <div class="segmented-control mb-4">
+            <button class="segmented-control-btn timer-duration-btn" data-mins="3">3 Mins</button>
+            <button class="segmented-control-btn active timer-duration-btn" data-mins="5">5 Mins</button>
+            <button class="segmented-control-btn timer-duration-btn" data-mins="10">10 Mins</button>
+            <button class="segmented-control-btn timer-duration-btn" data-mins="20">20 Mins</button>
+          </div>
+
+          <!-- Circular SVG Countdown Ring -->
+          <div class="position-relative d-inline-block my-3" style="width: 180px; height: 180px;">
+            <svg width="180" height="180">
+              <circle stroke="#E2E8F0" stroke-width="6" fill="transparent" r="80" cx="90" cy="90"/>
+              <circle id="timerProgressRing" stroke="#0F172A" stroke-width="6" stroke-linecap="round" fill="transparent" r="80" cx="90" cy="90" style="transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset 1s linear;"/>
+            </svg>
+            <div class="position-absolute top-50 start-50 translate-middle">
+              <div class="display-5 font-monospace fw-bold text-dark" id="meditationTimerDisplay">05:00</div>
+            </div>
+          </div>
+
+          <div>
+            <button class="btn-solid-dark fs-6 px-4 py-3 mt-3 justify-content-center mx-auto" id="startMeditationBtn">
+              <i class="bi bi-play-fill me-1"></i> Start Meditation
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Mood Journal & Micro-Habits Tracker -->
+    <section class="section-rhythm" id="habits">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-6 reveal-on-scroll">
+            <div class="glass-card p-4 p-md-5 h-100">
+              <span class="eyebrow-label"><i class="bi bi-heart-pulse"></i> Emotional State</span>
+              <h3 class="h4 serif-heading fw-bold mb-2">How is your energy flowing?</h3>
+              <p class="small text-muted mb-4">Select your mood for an instant neuroscience insight.</p>
+
+              <div class="d-flex gap-2 flex-wrap mb-4">
+                <button class="btn-outline-pill mood-btn selected" data-mood="grateful">😊 Grateful</button>
+                <button class="btn-outline-pill mood-btn" data-mood="serene">🌿 Serene</button>
+                <button class="btn-outline-pill mood-btn" data-mood="energized">⚡ Energized</button>
+                <button class="btn-outline-pill mood-btn" data-mood="overwhelmed">🌧️ Overwhelmed</button>
+                <button class="btn-outline-pill mood-btn" data-mood="fatigued">😴 Fatigued</button>
+              </div>
+
+              <div class="p-3 bg-white rounded-3 border">
+                <small class="fw-bold text-dark d-block mb-1">AuraCalm AI Insight:</small>
+                <p class="small text-secondary mb-0" id="moodFeedbackText">✨ Gratitude floods your nervous system with restorative dopamine.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal-on-scroll">
+            <div class="glass-card p-4 p-md-5 h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="h4 serif-heading fw-bold mb-0">Daily Micro-Habits</h3>
+                <span class="small fw-bold text-dark font-monospace" id="habitProgressText">2/3 completed (67%)</span>
+              </div>
+
+              <div class="progress mb-4" style="height: 6px; background: #E2E8F0;">
+                <div class="progress-bar bg-dark" id="habitProgressFill" style="width: 67%;"></div>
+              </div>
+
+              <div class="d-flex flex-column gap-2">
+                <div class="habit-item completed">
+                  <span class="small fw-semibold text-dark">☀️ 5-Minute Morning Sunlight Exposure</span>
+                  <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                </div>
+                <div class="habit-item completed">
+                  <span class="small fw-semibold text-dark">🌬️ Box Breathing Midday Reset</span>
+                  <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                </div>
+                <div class="habit-item">
+                  <span class="small fw-semibold text-dark">📵 Blue-Light Screen Curfew (45m Before Bed)</span>
+                  <i class="bi bi-circle text-muted fs-5"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Transparent Membership Investment -->
+    <section class="section-rhythm" id="pricing">
+      <div class="container">
+        <div class="text-center mb-5 reveal-on-scroll">
+          <span class="eyebrow-label"><i class="bi bi-wallet2"></i> Transparent Investment</span>
+          <h2 class="display-6 serif-heading fw-bold">Invest in Your Peace of Mind</h2>
+
+          <div class="d-flex align-items-center justify-content-center gap-3 mt-4">
+            <span class="fw-semibold text-muted small">Monthly</span>
+            <div class="form-check form-switch fs-5 mb-0">
+              <input class="form-check-input" type="checkbox" id="billingPlanToggle" checked style="cursor: pointer;">
+            </div>
+            <span class="fw-bold text-dark small">Annual Billing <span class="badge bg-success-subtle text-success ms-1">Save 40%</span></span>
+          </div>
+        </div>
+
+        <div class="row g-4 justify-content-center align-items-center" style="max-width: 900px; margin: 0 auto;">
+          <div class="col-md-6 reveal-on-scroll">
+            <div class="glass-card p-4 p-md-5 text-center">
+              <h3 class="h4 serif-heading fw-bold mb-2">Starter Calm</h3>
+              <div class="display-5 fw-bold text-dark my-3 font-mono" id="priceStarter">$4.99</div>
+              <p class="small text-muted mb-4">Core breathwork protocols & 2-channel sound generator.</p>
+              <button class="btn-outline-pill w-100 justify-content-center" data-open-modal="assessmentModal">Start Free Trial</button>
+            </div>
+          </div>
+
+          <div class="col-md-6 reveal-on-scroll">
+            <div class="glass-card pricing-card-pro p-4 p-md-5 text-center">
+              <span class="pricing-badge-popular">MOST POPULAR</span>
+              <h3 class="h4 serif-heading fw-bold mb-2">Sanctuary Pro</h3>
+              <div class="display-5 fw-bold text-dark my-3 font-mono" id="pricePro">$8.99</div>
+              <p class="small text-muted mb-4">Full 4-channel synthesizer, HRV sync & circadian laboratory.</p>
+              <button class="btn-solid-dark w-100 justify-content-center" data-open-modal="assessmentModal">Start 14-Day Free Trial</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Science FAQ Accordion -->
+    <section class="section-rhythm" id="faq">
+      <div class="container" style="max-width: 800px;">
+        <div class="text-center mb-5 reveal-on-scroll">
+          <span class="eyebrow-label"><i class="bi bi-question-circle"></i> Evidence & Methodology</span>
+          <h2 class="display-6 serif-heading fw-bold">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="accordion aura-accordion reveal-on-scroll" id="faqAcc">
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                How does the Web Audio synthesizer differ from recorded audio tracks?
+              </button>
+            </h3>
+            <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc">
+              <div class="accordion-body">
+                Unlike static MP3 recordings that loop and can cause subconscious auditory fatigue, our Web Audio synthesizers generate non-repeating mathematical frequencies in real time with continuous algorithmic variation.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+                Why is the 90-minute REM cycle calculation important?
+              </button>
+            </h3>
+            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+              <div class="accordion-body">
+                Awakening during Deep Slow-Wave (Delta) sleep triggers sleep inertia, leading to cognitive sluggishness for up to 4 hours. Timing your alarms with the end of a 90-minute REM cycle ensures you awaken during light sleep.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">
+                Is my health and biometric data stored in the cloud?
+              </button>
+            </h3>
+            <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+              <div class="accordion-body">
+                No. AuraCalm is engineered with zero-cloud local privacy. All biometric telemetry and journal reflections are processed and encrypted exclusively on your client device.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Assessment Onboarding Modal -->
+  <div id="assessmentModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center;" role="dialog" aria-modal="true">
+    <div class="glass-card p-4 p-md-5" style="max-width: 500px; width: 90%; background: #FFFFFF;">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="h5 serif-heading fw-bold mb-0">Calm Assessment</h4>
+        <button id="closeModalBtn" class="btn btn-sm btn-link text-muted" aria-label="Close modal"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div id="modalStep1">
+        <p class="small text-muted mb-3">What is your primary wellness goal?</p>
+        <div class="d-flex flex-column gap-2 mb-4">
+          <label class="p-3 border rounded-3 d-flex align-items-center gap-2" style="cursor: pointer;"><input type="radio" name="g" checked> Falling asleep faster</label>
+          <label class="p-3 border rounded-3 d-flex align-items-center gap-2" style="cursor: pointer;"><input type="radio" name="g"> Workday anxiety relief</label>
+        </div>
+        <button class="btn-solid-dark w-100 justify-content-center" id="submitAssessmentBtn">Generate My Protocol</button>
+      </div>
+      <div id="modalStep2" style="display: none;" class="text-center py-3">
+        <i class="bi bi-check-circle text-success fs-1"></i>
+        <h4 class="h5 serif-heading fw-bold my-2">Protocol Calibrated!</h4>
+        <button class="btn-solid-dark mx-auto" onclick="document.getElementById('assessmentModal').style.display='none';">Launch Sanctuary</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Sleep Routine Schedule Modal -->
+  <div id="routineModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center;" role="dialog" aria-modal="true">
+    <div class="glass-card p-4 p-md-5" style="max-width: 540px; width: 92%; background: #FFFFFF;">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <span class="eyebrow-label mb-1"><i class="bi bi-moon-stars"></i> Custom Sleep Protocol</span>
+          <h4 class="h4 serif-heading fw-bold mb-0" id="routineModalTitle">90-Minute Rest Routine</h4>
+        </div>
+        <button id="closeRoutineModalBtn" class="btn btn-sm btn-link text-muted" aria-label="Close modal"><i class="bi bi-x-lg"></i></button>
+      </div>
+
+      <p class="small text-muted mb-4">Optimal sequence calculated to maximize Delta slow-wave restoration and prevent sleep inertia:</p>
+
+      <div class="d-flex flex-column gap-3 mb-4">
+        <div class="p-3 border rounded-3 routine-card-item d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-phone-vibrate fs-4 text-warning"></i>
+            <div>
+              <strong class="d-block text-dark small">Blue-Light Screen Curfew</strong>
+              <small class="text-muted">45 minutes before sleep latency</small>
+            </div>
+          </div>
+          <span class="font-monospace fw-bold text-dark" id="routineCurfewTime">10:00 PM</span>
+        </div>
+
+        <div class="p-3 border rounded-3 routine-card-item d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-headphones fs-4 text-info"></i>
+            <div>
+              <strong class="d-block text-dark small">432Hz Soundscape Trigger</strong>
+              <small class="text-muted">Nordic Rain + Theta brainwave sync</small>
+            </div>
+          </div>
+          <span class="font-monospace fw-bold text-dark" id="routineAudioTime">10:30 PM</span>
+        </div>
+
+        <div class="p-3 border rounded-3 routine-card-item d-flex align-items-center justify-content-between" style="border-color: rgba(16, 185, 129, 0.4) !important; background: rgba(16, 185, 129, 0.05) !important;">
+          <div class="d-flex align-items-center gap-3">
+            <i class="bi bi-alarm fs-4 text-success"></i>
+            <div>
+              <strong class="d-block text-dark small">Optimal Bedtime Onset</strong>
+              <small class="text-success fw-semibold">Target 5 Full REM Cycles</small>
+            </div>
+          </div>
+          <span class="font-monospace fw-bold text-success fs-5" id="routineBedTime">10:46 PM</span>
+        </div>
+      </div>
+
+      <button class="btn-solid-dark w-100 justify-content-center" onclick="document.getElementById('routineModal').style.display='none';">
+        <i class="bi bi-check2-circle"></i>
+        <span>Calibrate Wind-Down Sanctuary</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Editorial 4-Column Sanctuary Footer -->
+  <footer class="footer-editorial-aura">
+    <div class="container">
+      <div class="row g-5 mb-5 align-items-start">
+        
+        <!-- Col 1: Brand & Status -->
+        <div class="col-lg-4">
+          <a href="#hero" class="brand-aura mb-3 d-inline-flex">
+            <div class="brand-icon-aura"><i class="bi bi-flower1"></i></div>
+            <span>Aura<span class="gradient-text">Calm</span></span>
+          </a>
+          <p class="text-secondary small mb-4 pe-lg-4">
+            An adaptive neuroscience sanctuary engineering calmer nervous systems through fluid breathwork, real-time synthesized audio waves, and circadian architecture.
+          </p>
+
+          <div class="d-flex flex-wrap align-items-center gap-2">
+            <div class="footer-live-badge">
+              <i></i>
+              <span>All Systems Operational</span>
+            </div>
+            <div class="font-monospace small text-muted" id="footerCircadianClock">
+              🕒 --:--:--
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Features & Audio -->
+        <div class="col-6 col-lg-2 offset-lg-1">
+          <h4 class="h6 fw-bold text-dark mb-3 text-uppercase font-monospace" style="font-size: 0.8rem; letter-spacing: 0.05em;">Features & Audio</h4>
+          <ul class="list-unstyled small d-flex flex-column gap-2 text-muted">
+            <li><a href="#soundscapes" class="text-secondary text-decoration-none">Sound Studio</a></li>
+            <li><a href="#breathing" class="text-secondary text-decoration-none">Fluid Breathwork</a></li>
+            <li><a href="#sleep-lab" class="text-secondary text-decoration-none">REM Sleep Math</a></li>
+            <li><a href="#timer" class="text-secondary text-decoration-none">Meditation Timer</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Science & Studies -->
+        <div class="col-6 col-lg-2">
+          <h4 class="h6 fw-bold text-dark mb-3 text-uppercase font-monospace" style="font-size: 0.8rem; letter-spacing: 0.05em;">Science & Studies</h4>
+          <ul class="list-unstyled small d-flex flex-column gap-2 text-muted">
+            <li><a href="#faq" class="text-secondary text-decoration-none">HRV Parasympathetic</a></li>
+            <li><a href="#faq" class="text-secondary text-decoration-none">528Hz Solfeggio</a></li>
+            <li><a href="#faq" class="text-secondary text-decoration-none">Theta Brainwaves</a></li>
+            <li><a href="#faq" class="text-secondary text-decoration-none">Zero-Cloud Privacy</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div class="col-lg-3">
+          <h4 class="h6 fw-bold text-dark mb-3 text-uppercase font-monospace" style="font-size: 0.8rem; letter-spacing: 0.05em;">Mindfulness Brief</h4>
+          <p class="small text-muted mb-3">Weekly neuroscience insights and audio journeys delivered every Sunday.</p>
+          <form class="newsletter-pill-form" id="footerNewsletterForm" onsubmit="event.preventDefault();">
+            <input type="email" id="footerNewsletterEmail" class="newsletter-pill-input" placeholder="Enter your email..." required>
+            <button type="submit" class="newsletter-pill-submit" id="footerNewsletterBtn">Join</button>
+          </form>
+          <span class="text-success small font-monospace mt-2 d-block" id="footerNewsletterStatus"></span>
+        </div>
+
+      </div>
+
+      <div class="pt-4 border-top d-flex flex-column flex-md-row justify-content-between align-items-center text-muted small">
+        <p class="mb-0">© 2026 AuraCalm Health Technologies Inc. All rights reserved.</p>
+        <div class="d-flex gap-3 mt-2 mt-md-0">
+          <span>Privacy Architecture</span>
+          <span>•</span>
+          <span>Neuroscience Whitepaper</span>
+          <span>•</span>
+          <span>WCAG AAA Compliant</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

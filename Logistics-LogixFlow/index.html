@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LogixFlow Global — Autonomous Freight Telemetry & IoT Logistics Command</title>
+  <meta name="description" content="Autonomous multi-modal logistics platform featuring real-time SVG radial IoT sensor gauges, animated global transit corridors, and sub-second fleet visibility.">
+
+  <!-- Performance Preconnect & Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Core Grid Framework & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. Industrial Terminal Navbar with Monospace Sliding Indicator & Mobile Drawer
+       ========================================================================== -->
+  <header>
+    <nav class="navbar-logix-terminal" aria-label="Command Navigation">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a href="#hero" class="terminal-brand">
+          <div class="terminal-icon-box">
+            <i class="bi bi-boxes fs-5"></i>
+          </div>
+          <span>Logix<span class="text-info">Flow</span> <small class="text-muted font-mono" style="font-size: 0.75rem;">GLOBAL</small></span>
+        </a>
+
+        <div class="terminal-nav-wrapper d-none d-lg-flex">
+          <div class="terminal-sliding-indicator" id="terminalSlidingIndicator"></div>
+          <ul class="terminal-nav-links" id="terminalNavLinks">
+            <li><a href="#telemetry-gauges" class="terminal-nav-link font-mono active">Telemetry</a></li>
+            <li><a href="#network" class="terminal-nav-link font-mono">Corridors</a></li>
+            <li><a href="#estimator" class="terminal-nav-link font-mono">Estimator</a></li>
+            <li><a href="#fleet" class="terminal-nav-link font-mono">Fleet Metrics</a></li>
+            <li><a href="#capabilities" class="terminal-nav-link font-mono">Infrastructure</a></li>
+            <li><a href="#faq" class="terminal-nav-link font-mono">SLA & Docs</a></li>
+          </ul>
+        </div>
+
+        <div class="d-flex align-items-center gap-3">
+          <div class="status-pill-gps d-none d-sm-inline-flex font-mono" id="utcLiveClockPill">
+            <span class="ping-indicator-dot"></span>
+            <span id="navUtcTime">UTC 00:00:00</span>
+          </div>
+          <a href="#telemetry-gauges" class="btn-terminal-primary d-none d-sm-inline-flex">
+            <span>Live Stream</span>
+            <i class="bi bi-arrow-right-short fs-5"></i>
+          </a>
+          <button class="mobile-logix-toggle d-lg-none" id="mobileLogixToggle" aria-label="Open command drawer" aria-expanded="false" aria-controls="mobileDrawerLogix">
+            <i class="bi bi-list fs-4"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Command Drawer -->
+    <div class="mobile-drawer-logix" id="mobileDrawerLogix" role="dialog" aria-modal="true" aria-label="Command Navigation Drawer">
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="#hero" class="terminal-brand">
+          <div class="terminal-icon-box">
+            <i class="bi bi-boxes fs-5"></i>
+          </div>
+          <span>Logix<span class="text-info">Flow</span></span>
+        </a>
+        <button class="mobile-logix-toggle" id="mobileLogixClose" aria-label="Close command drawer">
+          <i class="bi bi-x-lg fs-5"></i>
+        </button>
+      </div>
+
+      <ul class="mobile-drawer-logix-links">
+        <li><a href="#telemetry-gauges">> 01. IOT TELEMETRY HUD</a></li>
+        <li><a href="#network">> 02. GLOBAL CORRIDORS MAP</a></li>
+        <li><a href="#estimator">> 03. FREIGHT COST ESTIMATOR</a></li>
+        <li><a href="#fleet">> 04. FLEET METRICS RADAR</a></li>
+        <li><a href="#capabilities">> 05. INFRASTRUCTURE & SLA</a></li>
+        <li><a href="#faq">> 06. COMPLIANCE & API DOCS</a></li>
+      </ul>
+
+      <div class="d-flex flex-column gap-2 font-mono">
+        <a href="#telemetry-gauges" class="btn-terminal-primary justify-content-center py-3">
+          <span>CONNECT TELEMETRY FEED</span>
+          <i class="bi bi-broadcast"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content-terminal">
+    <!-- ==========================================================================
+         2. Hero Section with Live IoT Sensor Telemetry HUD
+         ========================================================================== -->
+    <section class="py-5" id="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill mb-3 border border-secondary font-mono small text-secondary" style="background: rgba(15, 23, 42, 0.8);">
+              <span class="text-info">●</span>
+              <span>100Hz Sub-Second Telemetry • 140+ Sovereign Port Corridors</span>
+            </div>
+
+            <h1 class="display-4 fw-bold text-white mb-3" style="letter-spacing: -0.02em;">
+              Autonomous Global Freight. <br>
+              <span class="text-info">Sub-Second Visibility.</span>
+            </h1>
+
+            <p class="lead text-secondary mb-4" style="font-size: 1.125rem;">
+              Monitor multi-modal containers across ocean, air, and rail corridors with live internal thermal logging, ambient humidity, and impact shock sensors.
+            </p>
+
+            <!-- Container Preset Switcher -->
+            <div class="mb-4">
+              <label class="form-label font-mono text-muted small d-block mb-2">Select Live Telemetry Feed:</label>
+              <div class="d-flex gap-2 flex-wrap">
+                <button class="preset-chip-btn active" data-id="LX-8024">Container LX-8024 (Tokyo ➔ Rotterdam)</button>
+                <button class="preset-chip-btn" data-id="LX-9912">Container LX-9912 (Singapore ➔ LA)</button>
+                <button class="preset-chip-btn" data-id="LX-4410">Container LX-4410 (Frankfurt ➔ Chicago)</button>
+              </div>
+            </div>
+
+            <div class="d-flex gap-4 font-mono small text-secondary">
+              <span><i class="bi bi-shield-check text-info"></i> ISO-27001 Certified</span>
+              <span><i class="bi bi-broadcast text-success"></i> Dual Iridium Satellite</span>
+            </div>
+          </div>
+
+          <!-- Live SVG Radial Telemetry Gauges HUD Panel -->
+          <div class="col-lg-6" id="telemetry-gauges">
+            <div class="hud-panel">
+              <div class="hud-header-bar">
+                <span class="h6 font-mono text-white mb-0"><i class="bi bi-cpu text-info me-2"></i> IoT Sensor Telemetry HUD</span>
+                <span class="status-pill-gps font-mono" id="telemetryStatusPill">In Transit — North Sea Ocean Corridor</span>
+              </div>
+
+              <!-- Radial Gauges Cluster -->
+              <div class="gauge-cluster mb-4">
+                <!-- Gauge 1: Reefer Temperature -->
+                <div>
+                  <div class="gauge-svg-container" role="meter" aria-label="Reefer Temperature" aria-valuenow="3.8" aria-valuemin="-40" aria-valuemax="40">
+                    <svg width="110" height="110">
+                      <circle class="gauge-bg-ring" cx="55" cy="55" r="44"/>
+                      <circle class="gauge-active-ring temp" id="tempGaugeVal" cx="55" cy="55" r="44" style="stroke-dasharray: 276.46; stroke-dashoffset: 80;"/>
+                    </svg>
+                    <div class="position-absolute top-50 start-50 translate-middle">
+                      <span class="fs-6 fw-bold font-mono text-white" id="tempGaugeText">+3.8°C</span>
+                    </div>
+                  </div>
+                  <small class="d-block font-mono text-secondary mt-2">Internal Temp</small>
+                </div>
+
+                <!-- Gauge 2: Ambient Humidity -->
+                <div>
+                  <div class="gauge-svg-container" role="meter" aria-label="Ambient Humidity" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100">
+                    <svg width="110" height="110">
+                      <circle class="gauge-bg-ring" cx="55" cy="55" r="44"/>
+                      <circle class="gauge-active-ring humid" id="humidGaugeVal" cx="55" cy="55" r="44" style="stroke-dasharray: 276.46; stroke-dashoffset: 120;"/>
+                    </svg>
+                    <div class="position-absolute top-50 start-50 translate-middle">
+                      <span class="fs-6 fw-bold font-mono text-white" id="humidGaugeText">42%</span>
+                    </div>
+                  </div>
+                  <small class="d-block font-mono text-secondary mt-2">Humidity</small>
+                </div>
+
+                <!-- Gauge 3: G-Force Shock Sensor -->
+                <div>
+                  <div class="gauge-svg-container" role="meter" aria-label="Impact Shock" aria-valuenow="0.12" aria-valuemin="0" aria-valuemax="1.0">
+                    <svg width="110" height="110">
+                      <circle class="gauge-bg-ring" cx="55" cy="55" r="44"/>
+                      <circle class="gauge-active-ring shock" id="shockGaugeVal" cx="55" cy="55" r="44" style="stroke-dasharray: 276.46; stroke-dashoffset: 210;"/>
+                    </svg>
+                    <div class="position-absolute top-50 start-50 translate-middle">
+                      <span class="fs-6 fw-bold font-mono text-white" id="shockGaugeText">0.12G</span>
+                    </div>
+                  </div>
+                  <small class="d-block font-mono text-secondary mt-2">Impact Force</small>
+                </div>
+              </div>
+
+              <!-- Shipment Progress Stepper -->
+              <div class="telemetry-stepper">
+                <div class="stepper-node completed">
+                  <div class="stepper-bullet"><i class="bi bi-check"></i></div>
+                  <small class="d-block font-mono text-secondary" style="font-size: 0.7rem;">Loaded</small>
+                </div>
+                <div class="stepper-node completed">
+                  <div class="stepper-bullet"><i class="bi bi-check"></i></div>
+                  <small class="d-block font-mono text-secondary" style="font-size: 0.7rem;">Customs</small>
+                </div>
+                <div class="stepper-node active">
+                  <div class="stepper-bullet"><i class="bi bi-airplane-engines"></i></div>
+                  <small class="d-block font-mono text-info fw-bold" style="font-size: 0.7rem;">Transit</small>
+                </div>
+                <div class="stepper-node">
+                  <div class="stepper-bullet">4</div>
+                  <small class="d-block font-mono text-secondary" style="font-size: 0.7rem;">Delivered</small>
+                </div>
+              </div>
+
+              <!-- Telemetry Metrics Stream -->
+              <div class="p-3 bg-dark rounded border border-secondary font-mono small">
+                <div class="row g-2">
+                  <div class="col-6">
+                    <span class="text-muted d-block" style="font-size: 0.75rem;">Origin Hub:</span>
+                    <span class="text-white fw-bold" id="telemetryOriginText">Tokyo (NRT) • Berth 04</span>
+                  </div>
+                  <div class="col-6">
+                    <span class="text-muted d-block" style="font-size: 0.75rem;">Destination Port:</span>
+                    <span class="text-white fw-bold" id="telemetryDestText">Rotterdam (RTM) • Gate 12</span>
+                  </div>
+                  <div class="col-6 mt-2">
+                    <span class="text-muted d-block" style="font-size: 0.75rem;">Estimated Arrival:</span>
+                    <span class="text-success fw-bold" id="telemetryEtaText">In 3 Days (08:45 UTC)</span>
+                  </div>
+                  <div class="col-6 mt-2">
+                    <span class="text-muted d-block" style="font-size: 0.75rem;">Assigned Vessel:</span>
+                    <span class="text-info fw-bold" id="telemetryVesselText">B777-F Skyfreight / LX-88</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         3. Multimodal Shipping Corridors Vector Map
+         ========================================================================== -->
+    <section class="py-5" id="network">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="font-mono text-info small">Global Mesh Infrastructure</span>
+          <h2 class="display-6 fw-bold text-white mb-2">Animated Multimodal Shipping Corridors</h2>
+          <p class="text-secondary">Click on any primary mega-hub marker to inspect active container anchorage and port clearance.</p>
+        </div>
+
+        <div class="world-map-wrapper">
+          <svg viewBox="0 0 1000 450" class="w-100 h-auto" xmlns="http://www.w3.org/2000/svg" aria-label="Interactive Global Routes Map">
+            <!-- Vector Landmass Silhouettes -->
+            <path d="M150 100 Q 220 80 300 120 T 260 260 T 180 300 Z" fill="#1E293B" opacity="0.6"/>
+            <path d="M450 90 Q 550 70 600 140 T 520 240 T 460 200 Z" fill="#1E293B" opacity="0.6"/>
+            <path d="M620 80 Q 850 60 880 200 T 750 300 T 630 200 Z" fill="#1E293B" opacity="0.6"/>
+
+            <!-- Animated Route Corridors -->
+            <path d="M 230 160 Q 360 100 480 140" fill="none" stroke="#0EA5E9" stroke-width="2.5" class="svg-route-line-primary"/>
+            <path d="M 720 240 Q 580 360 490 150" fill="none" stroke="#10B981" stroke-width="2" class="svg-route-line-secondary"/>
+
+            <!-- Mega-Hub Markers -->
+            <g class="map-hub-marker" data-hub="rtm">
+              <circle cx="490" cy="145" r="7" fill="#0EA5E9"/>
+              <text x="502" y="149" fill="#F8FAFC" font-size="11" font-family="JetBrains Mono" font-weight="bold">Rotterdam (RTM)</text>
+            </g>
+
+            <g class="map-hub-marker" data-hub="sin">
+              <circle cx="720" cy="245" r="7" fill="#10B981"/>
+              <text x="734" y="249" fill="#F8FAFC" font-size="11" font-family="JetBrains Mono" font-weight="bold">Singapore (SIN)</text>
+            </g>
+
+            <g class="map-hub-marker" data-hub="lax">
+              <circle cx="210" cy="180" r="7" fill="#F59E0B"/>
+              <text x="135" y="184" fill="#F8FAFC" font-size="11" font-family="JetBrains Mono" font-weight="bold">Los Angeles (LAX)</text>
+            </g>
+
+            <g class="map-hub-marker" data-hub="pvg">
+              <circle cx="780" cy="180" r="7" fill="#6366F1"/>
+              <text x="794" y="184" fill="#F8FAFC" font-size="11" font-family="JetBrains Mono" font-weight="bold">Shanghai (PVG)</text>
+            </g>
+          </svg>
+
+          <div class="p-3 bg-dark rounded border border-secondary mt-3 d-flex justify-content-between align-items-center font-mono small">
+            <div id="mapHubBannerText">
+              <strong>📍 Active Hub:</strong> Click any primary port marker above to view real-time berth throughput.
+            </div>
+            <span class="status-pill-gps"><i class="bi bi-activity"></i> Live AIS Feed</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. Freight Transit & Carbon Estimator
+         ========================================================================== -->
+    <section class="py-5" id="estimator">
+      <div class="container">
+        <div class="hud-panel p-4 p-md-5">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+              <span class="font-mono text-info small">Dynamic Pricing Engine</span>
+              <h2 class="h3 font-mono text-white mb-2">Freight Cost & Carbon Estimator</h2>
+              <p class="text-secondary mb-4">Calculate instant multi-modal transit benchmarks across priority Air Express and ultra-low carbon Ocean Green.</p>
+
+              <label class="form-label font-mono text-secondary small" for="cargoWeightInput">Cargo Payload (Metric Tons):</label>
+              <input type="number" id="cargoWeightInput" class="form-control bg-dark text-white border-secondary font-mono" value="5" min="1" max="50">
+            </div>
+
+            <div class="col-lg-6">
+              <div class="row g-3">
+                <div class="col-6">
+                  <div class="p-3 bg-dark border border-info rounded text-center">
+                    <span class="badge bg-info text-dark font-mono mb-2">AIR EXPRESS</span>
+                    <h3 class="h4 font-mono text-white mb-0" id="airCostOutput">$19,000</h3>
+                    <small class="text-secondary font-mono d-block my-1">2 — 3 Days Transit</small>
+                    <small class="text-warning font-mono" id="airCo2Output">9.3 t CO2</small>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-3 bg-dark border border-success rounded text-center">
+                    <span class="badge bg-success font-mono mb-2">OCEAN GREEN</span>
+                    <h3 class="h4 font-mono text-white mb-0" id="oceanCostOutput">$4,600</h3>
+                    <small class="text-secondary font-mono d-block my-1">16 — 20 Days Transit</small>
+                    <small class="text-success font-mono" id="oceanCo2Output">0.60 t CO2</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. Live AIS Global Fleet Telemetry Dashboard
+         ========================================================================== -->
+    <section class="py-5" id="fleet">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="font-mono text-info small">Global Operational Capacity</span>
+          <h2 class="display-6 fw-bold text-white mb-2">Live Fleet Telemetry Metrics</h2>
+        </div>
+
+        <div class="row g-4 text-center">
+          <div class="col-6 col-md-3">
+            <div class="p-4 bg-dark border border-secondary rounded-4">
+              <div class="h2 text-white font-mono fw-bold mb-1 telemetry-counter-num" data-target="2480">0</div>
+              <small class="text-secondary font-mono">Active Vessels in Berths</small>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="p-4 bg-dark border border-secondary rounded-4">
+              <div class="h2 text-info font-mono fw-bold mb-1 telemetry-counter-num" data-target="612">0</div>
+              <small class="text-secondary font-mono">Air Cargo Flights en Route</small>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="p-4 bg-dark border border-secondary rounded-4">
+              <div class="h2 text-success font-mono fw-bold mb-1 telemetry-counter-num" data-target="99.4" data-decimals="1" data-suffix="%">0</div>
+              <small class="text-secondary font-mono">On-Time SLA Clearance</small>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="p-4 bg-dark border border-secondary rounded-4">
+              <div class="h2 text-warning font-mono fw-bold mb-1 telemetry-counter-num" data-target="142" data-suffix="k">0</div>
+              <small class="text-secondary font-mono">Tons CO2 Offset</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. Autonomous Capabilities Bento Grid
+         ========================================================================== -->
+    <section class="py-5" id="capabilities">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="display-6 fw-bold text-white mb-2 font-mono">Autonomous Infrastructure</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="p-4 bg-dark border border-secondary rounded-4 h-100">
+              <i class="bi bi-shield-check text-info fs-1 mb-2"></i>
+              <h3 class="h5 text-white font-mono">Zero-Delay Customs</h3>
+              <p class="small text-secondary mb-0">Automated pre-arrival electronic bill of lading clearance with EU, US CBP, and ASEAN customs authorities.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 bg-dark border border-secondary rounded-4 h-100">
+              <i class="bi bi-snow text-primary fs-1 mb-2"></i>
+              <h3 class="h5 text-white font-mono">Pharmaceutical Cold-Chain</h3>
+              <p class="small text-secondary mb-0">Strict ±0.2°C dry-ice and reefer thermal logging with automated satellite telemetry alarms.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 bg-dark border border-secondary rounded-4 h-100">
+              <i class="bi bi-router text-success fs-1 mb-2"></i>
+              <h3 class="h5 text-white font-mono">GPS Mesh & Shock Alarms</h3>
+              <p class="small text-secondary mb-0">Tri-axis G-force impact and tilt logging to identify cargo mishandling and tamper breach instantaneously.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. Enterprise SLA & Documentation FAQ
+         ========================================================================== -->
+    <section class="py-5" id="faq">
+      <div class="container" style="max-width: 800px;">
+        <div class="text-center mb-5">
+          <h2 class="display-6 fw-bold text-white mb-2 font-mono">Enterprise SLA & Telemetry FAQ</h2>
+        </div>
+
+        <div class="accordion" id="logixFaq">
+          <div class="accordion-item bg-dark border border-secondary rounded-3 mb-2">
+            <h3 class="accordion-header">
+              <button class="accordion-button bg-dark text-white fw-bold font-mono" type="button" data-bs-toggle="collapse" data-bs-target="#lq1">
+                How is container telemetry transmitted in deep ocean crossing?
+              </button>
+            </h3>
+            <div id="lq1" class="accordion-collapse collapse show" data-bs-parent="#logixFaq">
+              <div class="accordion-body text-secondary small font-mono">
+                LogixFlow smart containers utilize dual Iridium satellite transmitters and LoRaWAN mesh networks across the vessel superstructure, guaranteeing continuous reporting even outside cellular coastal ranges.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item bg-dark border border-secondary rounded-3 mb-2">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-white fw-bold font-mono" type="button" data-bs-toggle="collapse" data-bs-target="#lq2">
+                What is the latency guarantee for temperature spike alerts?
+              </button>
+            </h3>
+            <div id="lq2" class="accordion-collapse collapse" data-bs-parent="#logixFaq">
+              <div class="accordion-body text-secondary small font-mono">
+                Whenever internal thermal sensors exceed programmed thresholds (e.g. +2°C to +8°C for biologics), emergency packets are dispatched over LEO satellite within 350 milliseconds to global dispatch hubs.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       8. Bespoke Asymmetric Mission Control Footer
+       ========================================================================== -->
+  <footer class="footer-editorial-logix">
+    <div class="container">
+      <div class="row g-5 mb-5 align-items-start">
+        <div class="col-lg-5">
+          <a href="#hero" class="terminal-brand mb-3 d-inline-flex">
+            <div class="terminal-icon-box">
+              <i class="bi bi-boxes fs-5"></i>
+            </div>
+            <span>Logix<span class="text-info">Flow</span> <small class="text-muted font-mono" style="font-size: 0.75rem;">GLOBAL</small></span>
+          </a>
+          <p class="text-secondary small mb-4 pe-lg-4 font-mono">
+            Autonomous multi-modal telemetry architecture for international ocean, air cargo, and intermodal freight routing.
+          </p>
+
+          <div class="d-flex flex-wrap align-items-center gap-3 mb-4 font-mono">
+            <div class="d-flex align-items-center gap-2 px-3 py-1 bg-dark border border-secondary rounded-pill text-success small">
+              <span class="ping-indicator-dot"></span>
+              <span>NETWORK MESH: 99.998% UPTIME</span>
+            </div>
+            <div class="text-info small" id="footerServerPing">
+              ⚡ API LATENCY: 24ms (IRIDIUM LEO)
+            </div>
+          </div>
+
+          <div class="footer-corridor-card font-mono small">
+            <div class="d-flex justify-content-between text-muted mb-1">
+              <span>SUEZ CANAL:</span>
+              <strong class="text-success">TRANSIT CLEAR (0 MIN DELAY)</strong>
+            </div>
+            <div class="d-flex justify-content-between text-muted mb-1">
+              <span>PANAMA CANAL:</span>
+              <strong class="text-info">NOMINAL (SLOT BOOKING OPEN)</strong>
+            </div>
+            <div class="d-flex justify-content-between text-muted">
+              <span>STRAIT OF MALACCA:</span>
+              <strong class="text-warning">HIGH AIS VESSEL DENSITY</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3 offset-lg-1 font-mono">
+          <h4 class="h6 text-white mb-3 text-uppercase">Telemetry Architecture</h4>
+          <ul class="list-unstyled small d-flex flex-column gap-2 text-secondary">
+            <li><a href="#telemetry-gauges" class="text-secondary text-decoration-none">> IoT Thermal HUD</a></li>
+            <li><a href="#network" class="text-secondary text-decoration-none">> Maritime Route Mesh</a></li>
+            <li><a href="#estimator" class="text-secondary text-decoration-none">> Dynamic Rate Engine</a></li>
+            <li><a href="#fleet" class="text-secondary text-decoration-none">> Global TEU Metrics</a></li>
+            <li><a href="#capabilities" class="text-secondary text-decoration-none">> ISO-27001 Security</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3 font-mono">
+          <h4 class="h6 text-white mb-3 text-uppercase">Corridor Advisory Alerts</h4>
+          <p class="small text-secondary mb-2">Automated EDI / Webhook dispatch alerts:</p>
+          <div class="d-flex gap-2">
+            <input type="email" id="footerLogixEmail" class="form-control form-control-sm bg-dark text-white border-secondary font-mono" placeholder="dispatcher@carrier.com">
+            <button class="btn btn-sm btn-info" id="footerLogixBtn">Subscribe</button>
+          </div>
+          <span class="text-info small font-mono mt-1 d-block" id="footerLogixStatus"></span>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-secondary d-flex flex-column flex-md-row justify-content-between align-items-center text-secondary small font-mono">
+        <p class="mb-0">© 2026 LogixFlow Global Systems Inc. 100% Vanilla HTML5, CSS3 & JavaScript.</p>
+        <div class="d-flex gap-3 mt-2 mt-md-0">
+          <span>IMO Compliant</span>
+          <span>•</span>
+          <span>AIS Data Feed 100Hz</span>
+          <span>•</span>
+          <span>IATA e-Freight</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

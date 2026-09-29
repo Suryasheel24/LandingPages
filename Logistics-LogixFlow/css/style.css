@@ -1,0 +1,505 @@
+/* ==========================================================================
+   LogixFlow Global — Principal Industrial Design System
+   Architecture: 8pt Grid, Luminous Telemetry, High-Contrast Precision
+   ========================================================================== */
+
+/* -----------------------------
+   1. Design Tokens (Design System)
+   ----------------------------- */
+:root {
+  /* Surface & Base Tokens */
+  --color-slate-950: #070B14;
+  --color-slate-900: #0B1120;
+  --color-slate-850: #0F172A;
+  --color-slate-800: #141F36;
+  --color-slate-750: #1B2948;
+  --color-slate-700: #24355A;
+
+  /* Border & Dividers */
+  --border-subtle: rgba(148, 163, 184, 0.12);
+  --border-medium: rgba(148, 163, 184, 0.22);
+  --border-highlight: rgba(14, 165, 233, 0.45);
+
+  /* Telemetry Luminous Accents (WCAG AAA Calibrated) */
+  --cyan-primary: #0EA5E9;
+  --cyan-glow: rgba(14, 165, 233, 0.35);
+  --emerald-success: #10B981;
+  --emerald-glow: rgba(16, 185, 129, 0.35);
+  --amber-warning: #F59E0B;
+  --amber-glow: rgba(245, 158, 11, 0.35);
+  --rose-danger: #F43F5E;
+
+  /* Typographic Contrast Hierarchy */
+  --text-primary: #F8FAFC;     /* 17.5:1 ratio */
+  --text-secondary: #94A3B8;   /* 7.3:1 ratio (AAA) */
+  --text-muted: #64748B;       /* 4.8:1 ratio (AA) */
+
+  /* Strict 8pt Spatial Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Elevation & Geometry */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 9999px;
+
+  --shadow-hud: 0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.05) inset;
+  --shadow-hud-hover: 0 12px 32px -4px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(14, 165, 233, 0.3) inset;
+
+  /* Precision Motion */
+  --ease-out-quint: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 180ms;
+  --duration-normal: 280ms;
+}
+
+/* -----------------------------
+   2. Base & Reset Architecture
+   ----------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--color-slate-950);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-slate-950);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  letter-spacing: -0.01em;
+}
+
+.main-content-terminal {
+  padding-top: clamp(80px, 10vh, 110px);
+}
+
+.form-control, .form-select {
+  font-size: 1rem;
+  min-height: 44px;
+}
+
+/* -----------------------------
+   3. Industrial Terminal Navbar & Mobile Drawer
+   ----------------------------- */
+.navbar-logix-terminal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(11, 17, 32, 0.92);
+  border-bottom: 1px solid var(--border-medium);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: var(--space-2) 0;
+  transition: all 0.3s var(--ease-out-quint);
+}
+
+.navbar-logix-terminal.scrolled {
+  background: rgba(8, 12, 22, 0.98);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 1px 1px var(--border-glow) inset;
+}
+
+.terminal-nav-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.terminal-sliding-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid var(--cyan-primary);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  z-index: 0;
+}
+
+.terminal-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.terminal-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--cyan-primary), #6366F1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 0 16px var(--cyan-glow);
+}
+
+.terminal-nav-links {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.terminal-nav-link {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) var(--ease-out-quint);
+  display: inline-block;
+}
+
+.terminal-nav-link:hover,
+.terminal-nav-link.active {
+  color: var(--cyan-primary);
+}
+
+.mobile-logix-toggle {
+  background: transparent;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+/* Mobile Command Drawer */
+.mobile-drawer-logix {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(11, 17, 32, 0.98);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--space-6) + env(safe-area-inset-top, 0px)) var(--space-6) calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-drawer-logix.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mobile-drawer-logix-links {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-6) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.mobile-drawer-logix-links a {
+  text-decoration: none;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: block;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.mobile-drawer-logix-links a:hover {
+  color: var(--cyan-primary);
+  transform: translateX(6px);
+}
+
+/* -----------------------------
+   Asymmetric Mission Control Footer
+   ----------------------------- */
+.footer-editorial-logix {
+  background: #060911;
+  border-top: 1px solid var(--border-medium);
+  padding: clamp(60px, 8vw, 90px) 0 var(--space-6);
+  position: relative;
+}
+
+.footer-corridor-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+}
+
+.status-pill-gps {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--emerald-success);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.ping-indicator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--emerald-success);
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pingPulse 2s infinite;
+}
+
+@keyframes pingPulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* -----------------------------
+   4. Structured Cards & HUD
+   ----------------------------- */
+.hud-panel {
+  background: var(--color-slate-900);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-hud);
+  transition: all var(--duration-normal) var(--ease-out-quint);
+  position: relative;
+}
+
+.hud-panel:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-hud-hover);
+  transform: translateY(-2px);
+}
+
+.hud-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* -----------------------------
+   5. Precision SVG Radial Gauges
+   ----------------------------- */
+.gauge-cluster {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .gauge-cluster {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gauge-svg-container {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin: 0 auto;
+}
+
+.gauge-bg-ring {
+  stroke: var(--color-slate-800);
+  stroke-width: 8;
+  fill: transparent;
+}
+
+.gauge-active-ring {
+  stroke-width: 8;
+  stroke-linecap: round;
+  fill: transparent;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 0.8s var(--ease-out-quint);
+}
+
+.gauge-active-ring.temp { stroke: var(--cyan-primary); filter: drop-shadow(0 0 6px var(--cyan-glow)); }
+.gauge-active-ring.humid { stroke: var(--emerald-success); filter: drop-shadow(0 0 6px var(--emerald-glow)); }
+.gauge-active-ring.shock { stroke: var(--amber-warning); filter: drop-shadow(0 0 6px var(--amber-glow)); }
+
+/* -----------------------------
+   6. Multimodal SVG Map Styles
+   ----------------------------- */
+.world-map-wrapper {
+  background: radial-gradient(circle at 50% 30%, var(--color-slate-850) 0%, var(--color-slate-950) 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  position: relative;
+  overflow: hidden;
+}
+
+.svg-route-line-primary {
+  stroke-dasharray: 8, 8;
+  animation: routeDashFlow 28s linear infinite;
+}
+
+.svg-route-line-secondary {
+  stroke-dasharray: 6, 6;
+  animation: routeDashFlow 18s linear infinite;
+}
+
+@keyframes routeDashFlow {
+  to { stroke-dashoffset: -1000; }
+}
+
+.map-hub-marker {
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.map-hub-marker:hover {
+  transform: scale(1.25);
+}
+
+/* -----------------------------
+   7. Buttons & Form Controls
+   ----------------------------- */
+.btn-terminal-primary {
+  background: var(--cyan-primary);
+  color: var(--color-slate-950);
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  box-shadow: 0 0 20px var(--cyan-glow);
+  transition: all var(--duration-fast) var(--ease-out-quint);
+  cursor: pointer;
+}
+
+.btn-terminal-primary:hover,
+.btn-terminal-primary:focus-visible {
+  background: #38BDF8;
+  box-shadow: 0 0 28px rgba(14, 165, 233, 0.6);
+  transform: translateY(-1px);
+  color: var(--color-slate-950);
+  outline: none;
+}
+
+.preset-chip-btn {
+  background: var(--color-slate-850);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out-quint);
+}
+
+.preset-chip-btn:hover,
+.preset-chip-btn.active {
+  background: var(--color-slate-750);
+  border-color: var(--cyan-primary);
+  color: var(--text-primary);
+}
+
+/* -----------------------------
+   8. Stepper / Shipment Timeline
+   ----------------------------- */
+.telemetry-stepper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  position: relative;
+  margin: var(--space-5) 0;
+}
+
+.stepper-node {
+  text-align: center;
+  position: relative;
+}
+
+.stepper-bullet {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-slate-850);
+  border: 2px solid var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-2);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  transition: all var(--duration-normal) var(--ease-out-quint);
+}
+
+.stepper-node.completed .stepper-bullet {
+  background: var(--emerald-success);
+  border-color: var(--emerald-success);
+  color: var(--color-slate-950);
+  box-shadow: 0 0 12px var(--emerald-glow);
+}
+
+.stepper-node.active .stepper-bullet {
+  background: var(--cyan-primary);
+  border-color: var(--cyan-primary);
+  color: var(--color-slate-950);
+  box-shadow: 0 0 14px var(--cyan-glow);
+  animation: nodePulse 1.8s infinite;
+}
+
+@keyframes nodePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}

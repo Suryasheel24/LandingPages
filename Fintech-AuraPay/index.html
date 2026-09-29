@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuraPay Black — Obsidian Metal Wealth Card & Private Treasury</title>
+  <meta name="description" content="Solid 18g laser-etched metal card with multi-material photorealistic shaders, 5% uncapped cashback, wholesale FX, and interactive security controls.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Bespoke Obsidian Floating Island Navbar with Gold Sliding Indicator & Mobile Drawer -->
+  <header>
+    <nav class="navbar-aurapay d-flex justify-content-between align-items-center" aria-label="Private Banking Navigation">
+      <a href="#hero" class="d-flex align-items-center gap-2 text-white text-decoration-none fw-bold fs-4">
+        <i class="bi bi-shield-shaded text-warning"></i>
+        <span>Aura<span class="text-warning">Pay</span></span>
+      </a>
+
+      <div class="nav-aura-wrapper d-none d-lg-flex">
+        <div class="nav-gold-sliding-pill" id="navGoldSlidingPill"></div>
+        <ul class="nav-links-aurapay" id="navLinksAuraPay">
+          <li><a href="#card-showcase" class="active">Metal Alloys</a></li>
+          <li><a href="#converter">Wholesale FX</a></li>
+          <li><a href="#perks">5% Yield</a></li>
+          <li><a href="#security">Vault Security</a></li>
+          <li><a href="#tiers">Card Tiers</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <a href="#card-showcase" class="gold-btn d-none d-sm-inline-flex">
+          <span>Order Card</span>
+        </a>
+
+        <button class="mobile-aura-toggle d-lg-none" id="mobileAuraToggle" aria-label="Open private banking menu" aria-expanded="false" aria-controls="mobileDrawerAuraPay">
+          <i class="bi bi-list fs-4"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Luxury Curtain Drawer -->
+    <div class="mobile-drawer-aurapay" id="mobileDrawerAuraPay" role="dialog" aria-modal="true" aria-label="Private Wealth Menu">
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="#hero" class="d-flex align-items-center gap-2 text-white text-decoration-none fw-bold fs-4">
+          <i class="bi bi-shield-shaded text-warning"></i>
+          <span>Aura<span class="text-warning">Pay</span></span>
+        </a>
+        <button class="mobile-aura-toggle" id="mobileAuraClose" aria-label="Close private banking menu">
+          <i class="bi bi-x-lg fs-5"></i>
+        </button>
+      </div>
+
+      <ul class="mobile-drawer-aurapay-links">
+        <li><a href="#card-showcase">01. 18G SOLID ALLOY FINISHES</a></li>
+        <li><a href="#converter">02. INTERBANK FX TREASURY</a></li>
+        <li><a href="#perks">03. 5% ANNUAL CASHBACK YIELD</a></li>
+        <li><a href="#security">04. HARDWARE CRYPTOGRAPHIC VAULT</a></li>
+        <li><a href="#tiers">05. OBSIDIAN CARD EDITIONS</a></li>
+        <li><a href="#faq">06. PRIVATE BANKING FAQ</a></li>
+      </ul>
+
+      <div class="d-flex flex-column gap-2">
+        <a href="#card-showcase" class="gold-btn justify-content-center py-3" onclick="document.getElementById('mobileAuraClose').click();">
+          <span>REQUEST METAL CARD INVITATION</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- 1. Hero Section with 3D Metal Card & Material Shaders -->
+    <section class="py-5" id="hero">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <span class="badge bg-warning text-dark fw-bold px-3 py-2 rounded-pill mb-3">
+              ✦ 18g Solid Metal Alloy Edition
+            </span>
+            <h1 class="hero-display-title fw-bold text-white mb-3">
+              Wealth Without Borders. <br>
+              <span class="text-warning">Crafted in Pure Metal.</span>
+            </h1>
+            <p class="lead text-secondary mb-4">
+              Hold 40+ currencies at real interbank rates with 5% uncapped global cashback, worldwide airport lounge access, and biometric security.
+            </p>
+
+            <div class="mb-4" id="card-showcase">
+              <label class="form-label small text-secondary d-block">Select Card Alloy Material:</label>
+              <div class="d-flex gap-2 flex-wrap">
+                <button class="btn btn-sm btn-warning active material-pill-btn" data-material="obsidian">✦ Obsidian Black</button>
+                <button class="btn btn-sm btn-dark border border-secondary material-pill-btn" data-material="gold">✦ 18K Brushed Gold</button>
+                <button class="btn btn-sm btn-dark border border-secondary material-pill-btn" data-material="platinum">✦ Frosted Platinum</button>
+                <button class="btn btn-sm btn-dark border border-secondary material-pill-btn" data-material="titanium">✦ Raw Titanium</button>
+              </div>
+            </div>
+
+            <div class="p-3 bg-dark border border-secondary rounded-3 mb-4">
+              <label for="customCardNameInput" class="form-label small text-secondary">Laser-Etch Cardholder Name:</label>
+              <input type="text" id="customCardNameInput" class="form-control bg-dark text-white border-secondary font-mono mb-2" value="ALEX MERCER" maxlength="24">
+              <button class="btn btn-outline-warning btn-sm w-100 rounded-pill mt-2" id="flipCardFaceBtn">
+                <i class="bi bi-arrow-repeat me-1"></i> Flip Card Front / Back (View Security Elements)
+              </button>
+            </div>
+
+            <div class="d-flex gap-4 text-secondary small flex-wrap">
+              <span><i class="bi bi-shield-check text-warning me-1"></i> FDIC Insured up to $2.5M</span>
+              <span><i class="bi bi-airplane text-warning me-1"></i> 0% Foreign Transaction Markups</span>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card-3d-scene">
+              <div class="metal-card-flipper" id="cardFlipper">
+                <!-- Card Front -->
+                <div class="metal-card-container material-obsidian" id="metalCardFront">
+                  <div class="card-glare"></div>
+
+                  <div class="d-flex justify-content-between align-items-center card-layer-content">
+                    <div class="chip-smart"></div>
+                    <i class="bi bi-wifi fs-4 text-white opacity-75"></i>
+                  </div>
+
+                  <div class="card-number-display card-layer-content my-3">
+                    •••• •••• •••• 8842
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-end card-layer-content">
+                    <div>
+                      <small class="d-block text-secondary card-sub-label">CARDHOLDER</small>
+                      <span class="fw-bold font-mono text-white card-holder-name d-inline-block" id="cardHolderDisplay">ALEX MERCER</span>
+                    </div>
+                    <div class="text-end">
+                      <span class="fs-5 fw-bold text-white font-mono">AURAPAY</span>
+                      <small class="d-block text-warning card-sub-label" id="cardEditionLabel">OBSIDIAN BLACK</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card Back -->
+                <div class="metal-card-container metal-card-back material-obsidian" id="metalCardBack">
+                  <div class="card-mag-stripe"></div>
+                  <div class="card-signature-band">
+                    <span class="card-cvv-text" id="cardCvvDisplay">842</span>
+                  </div>
+                  <div class="p-3 d-flex justify-content-between align-items-center text-secondary card-sub-label">
+                    <span>24/7 PRIVATE CONCIERGE: +1 (800) AURA-VIP</span>
+                    <span class="font-mono text-warning">18G SOLID ALLOY</span>
+                  </div>
+                </div>
+              </div>
+              <small class="d-block text-center text-secondary mt-3 font-mono">✦ Move cursor over card for 3D tilt & dynamic light glare</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Live Wholesale FX & Crypto Treasury Calculator -->
+    <section class="py-5" id="converter">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-5">
+            <span class="text-warning font-mono small">Live Interbank Treasury</span>
+            <h2 class="display-6 fw-bold text-white mb-3">Zero-Spread Currency Converter</h2>
+            <p class="text-secondary mb-4">
+              Exchange multi-currency balances and crypto assets at true wholesale institutional rates with zero hidden markups.
+            </p>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="p-4 bg-dark border border-secondary rounded-4">
+              <div class="row g-3 align-items-center">
+                <div class="col-md-5">
+                  <label for="fxAmount" class="form-label small text-secondary">You Send</label>
+                  <input type="number" id="fxAmount" class="form-control form-control-lg bg-dark text-white border-secondary font-mono" value="2500" min="10" step="10">
+                  <select id="fxFrom" class="form-select bg-dark text-white border-secondary mt-2" aria-label="Currency to send from">
+                    <option value="USD" selected>USD — US Dollar</option>
+                    <option value="EUR">EUR — Euro</option>
+                    <option value="GBP">GBP — British Pound</option>
+                  </select>
+                </div>
+
+                <div class="col-md-2 text-center">
+                  <i class="bi bi-arrow-left-right text-warning fs-3"></i>
+                </div>
+
+                <div class="col-md-5">
+                  <label class="form-label small text-secondary">You Receive (Zero Fee)</label>
+                  <div class="p-3 bg-dark rounded border border-secondary text-warning font-mono fw-bold fs-4" id="fxResult">
+                    2,300.00 EUR
+                  </div>
+                  <select id="fxTo" class="form-select bg-dark text-white border-secondary mt-2" aria-label="Currency to receive in">
+                    <option value="EUR" selected>EUR — Euro</option>
+                    <option value="JPY">JPY — Japanese Yen</option>
+                    <option value="BTC">BTC — Bitcoin</option>
+                    <option value="ETH">ETH — Ethereum</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="gold-btn w-100 justify-content-center mt-3" id="executeFxBtn">
+                <i class="bi bi-lightning-charge-fill"></i> Execute Instant Institutional Exchange
+              </button>
+
+              <div id="fxOrderToast" class="alert alert-success mt-3 py-2 small mb-0" style="display: none;">
+                <i class="bi bi-check-circle-fill me-1"></i> <span id="fxOrderDetails">Instant trade completed at wholesale rate! Saved $42.50 vs high-street banks.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Cashback Yield Calculator Slider -->
+    <section class="py-5" id="perks">
+      <div class="container">
+        <div class="p-4 p-md-5 bg-dark border border-secondary rounded-4">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+              <h2 class="h3 fw-bold text-white mb-2">5% Metal Cashback Yield</h2>
+              <p class="text-secondary mb-4">Calculate annual rewards deposited directly into your high-yield treasury.</p>
+
+              <label for="spendSlider" class="form-label text-secondary small d-flex justify-content-between">
+                <span>Monthly Spend</span>
+                <span class="text-warning fw-bold font-mono" id="spendDisplayVal">$4,000/mo</span>
+              </label>
+              <input type="range" class="form-range" id="spendSlider" min="500" max="15000" step="250" value="4000">
+            </div>
+
+            <div class="col-lg-6 text-center text-lg-end">
+              <small class="text-secondary font-mono d-block">Estimated Annual Cashback</small>
+              <div class="display-4 fw-bold text-warning font-mono mb-2" id="rewardDisplayVal">+$2,400/yr</div>
+              <span class="badge bg-dark border border-warning text-warning px-3 py-2">+ Global Priority Lounge Access</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Interactive Security Protocol Controls -->
+    <section class="py-5" id="security">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="text-warning font-mono small">Vault Architecture</span>
+          <h2 class="display-6 fw-bold text-white mb-2">Interactive Security Sandbox</h2>
+          <p class="text-secondary">Toggle hardware-grade protection parameters with instant cryptographic key rotation.</p>
+        </div>
+
+        <div class="p-4 p-md-5 bg-dark border border-secondary rounded-4 container-narrow">
+          <div class="d-flex flex-column gap-3">
+            <div class="d-flex justify-content-between align-items-center p-3 border border-secondary rounded-3">
+              <div>
+                <strong class="d-block text-white">Biometric FaceID Card Lock</strong>
+                <small class="text-secondary">Requires hardware biometric match on mobile before physical POS approval.</small>
+              </div>
+              <div class="form-check form-switch fs-4">
+                <input class="form-check-input security-toggle-switch" type="checkbox" data-feature="Biometric Lock" checked aria-label="Toggle Biometric Lock">
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center p-3 border border-secondary rounded-3">
+              <div>
+                <strong class="d-block text-white">Dynamic Disposable CVV Generator</strong>
+                <small class="text-secondary">Regenerates digital security code every 60 seconds to prevent replay attacks.</small>
+              </div>
+              <div class="form-check form-switch fs-4">
+                <input class="form-check-input security-toggle-switch" type="checkbox" data-feature="Disposable CVV" checked aria-label="Toggle Disposable CVV">
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center p-3 border border-secondary rounded-3">
+              <div>
+                <strong class="d-block text-white">Geofenced GPS Location Lock</strong>
+                <small class="text-secondary">Declines transactions if the physical card location does not match your smartphone.</small>
+              </div>
+              <div class="form-check form-switch fs-4">
+                <input class="form-check-input security-toggle-switch" type="checkbox" data-feature="Geofence Lock" aria-label="Toggle Geofence Lock">
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3 p-2 text-center text-success font-mono small" id="securityStatusFeedback">
+            ✓ Security vault operational. All protocols active.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Card Tiers & Feature Matrix -->
+    <section class="py-5" id="tiers">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="display-6 fw-bold text-white mb-2">Card Editions</h2>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-5">
+            <div class="p-4 p-md-5 bg-dark border border-secondary rounded-4 text-center h-100 d-flex flex-column justify-content-between">
+              <div>
+                <h3 class="h4 fw-bold text-white mb-2">Aura Classic</h3>
+                <div class="display-5 fw-bold text-white my-3">$0/mo</div>
+                <p class="small text-secondary mb-4">Standard virtual card, basic FX treasury, and FDIC insured deposits.</p>
+              </div>
+              <button class="btn btn-outline-secondary w-100 rounded-pill">Open Classic Account</button>
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <div class="p-4 p-md-5 bg-dark border border-warning rounded-4 text-center h-100 d-flex flex-column justify-content-between">
+              <div>
+                <span class="badge bg-warning text-dark fw-bold mb-2">TUNGSTEN METAL</span>
+                <h3 class="h4 fw-bold text-white mb-2">Aura Black Edition</h3>
+                <div class="display-5 fw-bold text-warning my-3">$29/mo</div>
+                <p class="small text-secondary mb-4">Solid 18g metal alloy, 5% uncapped cashback, global lounge access, and 24/7 dedicated concierge.</p>
+              </div>
+              <a href="#hero" class="gold-btn w-100 justify-content-center">Order Black Edition</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Private Banking FAQ -->
+    <section class="py-5" id="faq">
+      <div class="container container-narrow">
+        <div class="text-center mb-5">
+          <h2 class="display-6 fw-bold text-white mb-2 font-mono">Private Banking FAQ</h2>
+        </div>
+
+        <div class="accordion" id="auraFaq">
+          <div class="accordion-item bg-dark border border-secondary rounded-3 mb-2">
+            <h3 class="accordion-header">
+              <button class="accordion-button bg-dark text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#aq1">
+                How fast is international metal card dispatch?
+              </button>
+            </h3>
+            <div id="aq1" class="accordion-collapse collapse show" data-bs-parent="#auraFaq">
+              <div class="accordion-body text-secondary small">
+                Every solid metal card is precision laser-etched and dispatched via priority courier (DHL Express) within 48 business hours with encrypted delivery tracking.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item bg-dark border border-secondary rounded-3 mb-2">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#aq2">
+                How does AuraPay guarantee zero wholesale FX markup?
+              </button>
+            </h3>
+            <div id="aq2" class="accordion-collapse collapse" data-bs-parent="#auraFaq">
+              <div class="accordion-body text-secondary small">
+                We pass institutional interbank spot rates directly to client wallets through direct connectivity with Tier-1 liquidity providers, charging 0% spread during global market hours.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item bg-dark border border-secondary rounded-3 mb-2">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed bg-dark text-white fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#aq3">
+                Are treasury balances protected and insured?
+              </button>
+            </h3>
+            <div id="aq3" class="accordion-collapse collapse" data-bs-parent="#auraFaq">
+              <div class="accordion-body text-secondary small">
+                Yes. USD deposits are held at partner chartered banks with FDIC insurance up to $2,500,000 via our sweep deposit network.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bespoke Asymmetric Private Wealth Footer -->
+  <footer class="footer-editorial-aurapay">
+    <div class="container">
+      <div class="row g-5 mb-5 align-items-start">
+        <div class="col-lg-5">
+          <a href="#hero" class="d-flex align-items-center gap-2 text-white text-decoration-none fw-bold fs-4 mb-3">
+            <i class="bi bi-shield-shaded text-warning"></i>
+            <span>Aura<span class="text-warning">Pay</span></span>
+          </a>
+          <p class="text-secondary small mb-4 pe-lg-4">
+            Private neobanking & institutional treasury architecture. Solid 18g laser-etched tungsten & titanium wealth cards with multi-currency zero-spread settlement.
+          </p>
+
+          <div class="d-flex flex-wrap align-items-center gap-3 mb-4">
+            <div class="footer-market-ticker">
+              <span style="width: 8px; height: 8px; background: #D4AF37; border-radius: 50%;"></span>
+              <span id="footerMarketStatus">WALL STREET / LONDON FX: OPEN</span>
+            </div>
+            <div class="text-secondary font-mono small" id="footerNyClock">
+              🕒 NY TIME: --:--:-- EST
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3 offset-lg-1">
+          <h4 class="h6 fw-bold text-white mb-3 text-uppercase font-mono">Treasury Protocols</h4>
+          <ul class="list-unstyled small d-flex flex-column gap-2 text-secondary font-mono">
+            <li><a href="#card-showcase" class="text-secondary text-decoration-none">> Solid Metal Alloys</a></li>
+            <li><a href="#converter" class="text-secondary text-decoration-none">> Interbank FX Rates</a></li>
+            <li><a href="#perks" class="text-secondary text-decoration-none">> 5% Annual Cashback</a></li>
+            <li><a href="#security" class="text-secondary text-decoration-none">> Biometric Lock Vault</a></li>
+            <li><a href="#tiers" class="text-secondary text-decoration-none">> Card Editions</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h4 class="h6 fw-bold text-white mb-3 text-uppercase font-mono">Private Client Advisory</h4>
+          <p class="small text-secondary mb-2">Request direct allocation & metal dispatch updates:</p>
+          <div class="d-flex gap-2">
+            <input type="email" id="footerAuraEmail" class="form-control form-control-sm bg-dark text-white border-secondary font-mono" placeholder="vip@familyoffice.com">
+            <button class="gold-btn btn-sm" id="footerAuraBtn" style="min-height: 38px; padding: 4px 16px;">Request</button>
+          </div>
+          <span class="text-warning small font-mono mt-1 d-block" id="footerAuraStatus"></span>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-secondary d-flex flex-column flex-md-row justify-content-between align-items-center text-secondary small font-mono">
+        <p class="mb-0">© 2026 AuraPay Technologies Ltd. Crafted with Pure Vanilla HTML5, CSS3 & JavaScript.</p>
+        <div class="d-flex gap-3 mt-2 mt-md-0">
+          <span>FDIC Insured Sweep Network</span>
+          <span>•</span>
+          <span>PCI-DSS Level 1</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

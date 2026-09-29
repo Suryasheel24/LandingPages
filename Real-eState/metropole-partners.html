@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Metropole Partners — Executive Living in the Urban Core</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+:root{
+  --offwhite:#FBFBFB; --greige:#F0EFEA; --navy:#121B28; --brass:#B89563; --border:#E2E1DC;
+  --grotesk:'Space Grotesk', sans-serif; --sans:'Inter', sans-serif;
+}
+*{box-sizing:border-box;-webkit-font-smoothing:antialiased}
+body{background:var(--offwhite);color:var(--navy);font-family:var(--sans);margin:0;line-height:1.6;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:var(--grotesk);font-weight:600;line-height:1.08;margin:0}
+p{max-width:56ch;color:#4b5563}
+.container-x{max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+
+nav.mp{position:sticky;top:0;z-index:30;background:rgba(251,251,251,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:16px 0}
+nav.mp .container-x{display:flex;align-items:center;justify-content:space-between}
+.wordmark{font-family:var(--grotesk);font-size:1.3rem;font-weight:700}
+.wordmark span{color:var(--brass)}
+.navlinks{display:flex;gap:28px;font-size:.9rem}
+.navlinks a{color:var(--navy);text-decoration:none}
+.navlinks a:hover{color:var(--brass)}
+.btn-navy{background:var(--navy);color:var(--offwhite);border:none;padding:12px 22px;border-radius:2px;min-height:44px;font-size:.88rem}
+.btn-outline{background:transparent;border:1px solid var(--navy);color:var(--navy);padding:11px 20px;border-radius:2px;min-height:44px;font-size:.88rem}
+@media(max-width:800px){.navlinks{display:none}}
+
+/* Hero */
+.hero{padding:clamp(40px,6vw,80px) 0 70px}
+.hero-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center}
+@media(max-width:950px){.hero-grid{grid-template-columns:1fr}}
+.commute{display:inline-flex;align-items:center;gap:8px;background:var(--greige);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:.8rem;margin-bottom:20px}
+.commute i{color:var(--brass)}
+.hero h1{font-size:clamp(2.3rem,4.6vw,3.6rem);letter-spacing:-.01em}
+.hero p{margin-top:18px;font-size:1.02rem}
+
+.inquiry{margin-top:30px;background:#fff;border:1px solid var(--border);border-radius:6px;padding:22px}
+.inquiry .row{display:flex;gap:10px;flex-wrap:wrap}
+.inquiry input{flex:1;min-width:140px;border:1px solid var(--border);padding:12px;border-radius:4px;min-height:44px;font-family:var(--sans)}
+.inquiry button{white-space:nowrap}
+
+.hero-photo{aspect-ratio:4/3.4;border-radius:6px;position:relative;overflow:hidden;
+  background:linear-gradient(200deg,#dfe4ea 0%,#aebbc8 45%,#5c6c7d 75%,var(--navy) 100%)}
+.hero-photo::before{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 2px, transparent 2px 58px);}
+.hero-photo .tag{position:absolute;left:20px;top:20px;background:rgba(251,251,251,.92);padding:8px 14px;border-radius:20px;font-size:.76rem}
+
+/* Amenity bento */
+.section{padding:76px 0;border-top:1px solid var(--border)}
+.section-head{max-width:600px;margin-bottom:40px}
+.section-head h2{font-size:clamp(1.8rem,3.2vw,2.4rem)}
+.amenity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:900px){.amenity-grid{grid-template-columns:repeat(2,1fr)}}
+.amenity-card{background:#fff;border:1px solid var(--border);border-radius:6px;padding:26px}
+.amenity-card i{font-size:1.3rem;color:var(--brass)}
+.amenity-card h3{font-family:var(--sans);font-weight:600;font-size:1rem;margin:14px 0 6px}
+.amenity-card p{font-size:.87rem}
+
+/* Floorplan explorer */
+.tabs{display:flex;gap:8px;border-bottom:1px solid var(--border);margin-bottom:32px;flex-wrap:wrap}
+.tab-btn{background:none;border:none;padding:14px 4px;font-family:var(--grotesk);font-size:.95rem;color:#6b7280;border-bottom:2px solid transparent;min-height:44px;cursor:pointer}
+.tab-btn.active{color:var(--navy);border-color:var(--brass)}
+.plan-panel{display:none;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.plan-panel.active{display:grid}
+@media(max-width:850px){.plan-panel.active{grid-template-columns:1fr}}
+.plan-visual{aspect-ratio:5/4;background:var(--greige);border:1px solid var(--border);border-radius:6px;position:relative}
+.plan-visual::before{content:"";position:absolute;inset:24px;border:1.5px dashed #b7bcc4}
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.spec-grid div{border-top:1px solid var(--border);padding-top:12px}
+.spec-grid .num{font-family:var(--grotesk);font-size:1.4rem}
+.spec-grid .label{font-size:.78rem;color:#6b7280}
+
+/* Consultation drawer + sticky mobile bar */
+.drawer-overlay{position:fixed;inset:0;background:rgba(18,27,40,.5);opacity:0;pointer-events:none;transition:opacity .3s;z-index:50}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,92vw);background:var(--offwhite);z-index:51;transform:translateX(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);padding:32px;padding-top:calc(32px + env(safe-area-inset-top,0px));overflow-y:auto}
+.drawer.open{transform:translateX(0)}
+.drawer h3{font-size:1.5rem}
+.drawer .close-btn{position:absolute;top:22px;right:22px;background:none;border:none;font-size:1.4rem;min-width:44px;min-height:44px}
+.drawer label{font-size:.8rem;display:block;margin:16px 0 6px}
+.drawer input,.drawer select{width:100%;border:1px solid var(--border);padding:11px 12px;border-radius:4px;min-height:44px;font-family:var(--sans)}
+
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;background:var(--navy);padding:14px 20px;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px));display:none;z-index:40;align-items:center;justify-content:space-between}
+.sticky-cta span{color:var(--offwhite);font-size:.85rem}
+@media(max-width:767px){.sticky-cta{display:flex}}
+
+footer.mp{border-top:1px solid var(--border);padding:36px 0 90px;font-size:.85rem;color:#6b7280}
+@media(min-width:768px){footer.mp{padding-bottom:36px}}
+.footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+</style>
+</head>
+<body>
+
+<nav class="mp">
+  <div class="container-x">
+    <span class="wordmark">METROPOLE<span>.</span></span>
+    <div class="navlinks">
+      <a href="#amenities">Amenities</a>
+      <a href="#floorplans">Floorplans</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="btn-navy" id="openConsult">Schedule a Consultation</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container-x hero-grid">
+    <div>
+      <div class="commute"><i class="bi bi-train-front"></i> 12 min to the Financial District</div>
+      <h1>Executive Living in the Urban Core</h1>
+      <p>Full-height glass, private work pods, and a five-minute walk to everything. Built for people whose calendar doesn't have room for a commute.</p>
+
+      <div class="inquiry">
+        <label style="font-size:.8rem;display:block;margin-bottom:8px">Get availability and pricing</label>
+        <div class="row">
+          <input type="email" placeholder="Work email" id="quickEmail">
+          <button class="btn-navy" id="quickSend">Request Info</button>
+        </div>
+        <p id="quickConfirm" style="display:none;font-size:.82rem;color:var(--brass);margin-top:10px">Thanks — our leasing team will follow up today.</p>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <span class="tag">The Meridian Tower — Unit 24B</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="amenities">
+  <div class="container-x">
+    <div class="section-head">
+      <h2>Built around how you actually work</h2>
+      <p>Every Metropole building is designed for residents who bring their career home with them.</p>
+    </div>
+    <div class="amenity-grid">
+      <div class="amenity-card"><i class="bi bi-laptop"></i><h3>Private work pods</h3><p>Soundproof single-occupancy rooms, bookable from the resident app.</p></div>
+      <div class="amenity-card"><i class="bi bi-people"></i><h3>Soundproof conference rooms</h3><p>Two meeting rooms per floor, video-call ready.</p></div>
+      <div class="amenity-card"><i class="bi bi-heart-pulse"></i><h3>Rooftop wellness club</h3><p>Full gym, sauna, and a therapist-led recovery room.</p></div>
+      <div class="amenity-card"><i class="bi bi-ev-front"></i><h3>Private EV parking</h3><p>Reserved charging bay included with every 2-bedroom and penthouse.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="floorplans">
+  <div class="container-x">
+    <div class="section-head">
+      <h2>Explore the floorplans</h2>
+      <p>Three layouts, all available for move-in within 60 days.</p>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" data-plan="p1">1-Bedroom Executive</button>
+      <button class="tab-btn" data-plan="p2">2-Bedroom Dual Suite</button>
+      <button class="tab-btn" data-plan="p3">Penthouse Studio</button>
+    </div>
+    <div class="plan-panel active" id="p1">
+      <div class="plan-visual"></div>
+      <div>
+        <h3>1-Bedroom Executive</h3>
+        <p>A single, oversized bedroom suite with a built-in work nook and floor-to-ceiling glass.</p>
+        <div class="spec-grid">
+          <div><div class="num">720</div><div class="label">SQ FT</div></div>
+          <div><div class="num">$3,150</div><div class="label">STARTING / MO</div></div>
+          <div><div class="num">1</div><div class="label">PRIVATE BALCONY</div></div>
+          <div><div class="num">60 days</div><div class="label">MOVE-IN</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="plan-panel" id="p2">
+      <div class="plan-visual"></div>
+      <div>
+        <h3>2-Bedroom Dual Suite</h3>
+        <p>Two full suites on opposite ends of the unit — ideal for couples who both work from home.</p>
+        <div class="spec-grid">
+          <div><div class="num">1,140</div><div class="label">SQ FT</div></div>
+          <div><div class="num">$4,650</div><div class="label">STARTING / MO</div></div>
+          <div><div class="num">2</div><div class="label">FULL BATHS</div></div>
+          <div><div class="num">45 days</div><div class="label">MOVE-IN</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="plan-panel" id="p3">
+      <div class="plan-visual"></div>
+      <div>
+        <h3>Penthouse Studio</h3>
+        <p>Top-floor, wraparound glass, and a private rooftop terrace with skyline views.</p>
+        <div class="spec-grid">
+          <div><div class="num">1,860</div><div class="label">SQ FT</div></div>
+          <div><div class="num">$8,900</div><div class="label">STARTING / MO</div></div>
+          <div><div class="num">1</div><div class="label">PRIVATE TERRACE</div></div>
+          <div><div class="num">Now</div><div class="label">MOVE-IN</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="mp" id="contact">
+  <div class="container-x footer-row">
+    <span>Metropole Partners — three towers, urban core</span>
+    <span>leasing@metropolepartners.example · +1 (212) 555-0187</span>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <span>Evening tours available this week</span>
+  <button class="btn-navy" style="background:var(--brass)" onclick="document.getElementById('openConsult').click()">Book Tour</button>
+</div>
+
+<div class="drawer-overlay" id="consultOverlay"></div>
+<div class="drawer" id="consultDrawer">
+  <button class="close-btn" id="closeConsult" aria-label="Close">&times;</button>
+  <h3>Schedule a Consultation</h3>
+  <p style="font-size:.92rem">Evening and weekend tours available for working professionals.</p>
+  <form id="consultForm">
+    <label for="cName">Full name</label>
+    <input id="cName" required>
+    <label for="cEmail">Email</label>
+    <input id="cEmail" type="email" required>
+    <label for="cPlan">Interested in</label>
+    <select id="cPlan">
+      <option>1-Bedroom Executive</option>
+      <option>2-Bedroom Dual Suite</option>
+      <option>Penthouse Studio</option>
+    </select>
+    <button type="submit" class="btn-navy" style="width:100%;margin-top:22px">Request Consultation</button>
+    <p id="consultConfirm" style="display:none;margin-top:12px;font-size:.85rem;color:var(--brass)">Received — expect a call within one business day.</p>
+  </form>
+</div>
+
+<script>
+// Floorplan tab switching
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.plan-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.plan).classList.add('active');
+  });
+});
+
+// Consultation drawer
+const cOverlay = document.getElementById('consultOverlay');
+const cDrawer = document.getElementById('consultDrawer');
+function openConsult(){cDrawer.classList.add('open');cOverlay.classList.add('open');}
+document.getElementById('openConsult').addEventListener('click', openConsult);
+document.getElementById('closeConsult').addEventListener('click', ()=>{cDrawer.classList.remove('open');cOverlay.classList.remove('open');});
+cOverlay.addEventListener('click', ()=>{cDrawer.classList.remove('open');cOverlay.classList.remove('open');});
+document.getElementById('consultForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  document.getElementById('consultConfirm').style.display='block';
+});
+
+// Quick hero inquiry
+document.getElementById('quickSend').addEventListener('click', ()=>{
+  const val = document.getElementById('quickEmail').value;
+  if(/\S+@\S+\.\S+/.test(val)){
+    document.getElementById('quickConfirm').style.display='block';
+  }
+});
+</script>
+</body>
+</html>

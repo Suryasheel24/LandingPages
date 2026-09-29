@@ -1,0 +1,395 @@
+:root {
+  --bg-black: #05070B;
+  --bg-card-dark: #0D111A;
+  --bg-card-elevated: #151B28;
+  
+  --gold-primary: #D4AF37;
+  --gold-gradient: linear-gradient(135deg, #F6D365 0%, #FDA085 100%);
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-gold: rgba(212, 175, 55, 0.4);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-black);
+}
+
+body {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-black);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.main-content {
+  padding-top: clamp(90px, 12vh, 130px);
+}
+
+.hero-display-title {
+  letter-spacing: -0.025em;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.15;
+}
+
+.container-narrow {
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+/* -----------------------------
+   Obsidian Floating Island Navbar & Mobile Curtain Drawer
+   ----------------------------- */
+.navbar-aurapay {
+  position: fixed;
+  top: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92%, 1180px);
+  z-index: 1000;
+  padding: var(--space-2) var(--space-5);
+  background: rgba(13, 17, 26, 0.88);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.15);
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.navbar-aurapay.scrolled {
+  top: var(--space-2);
+  background: rgba(7, 10, 16, 0.96);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.25);
+}
+
+.nav-aura-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-gold-sliding-pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  z-index: 0;
+}
+
+.nav-links-aurapay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links-aurapay a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.885rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  display: inline-block;
+  transition: color 0.2s;
+}
+
+.nav-links-aurapay a:hover,
+.nav-links-aurapay a.active {
+  color: #fff;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+.mobile-aura-toggle {
+  background: transparent;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-pill);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+/* Mobile Luxury Curtain Drawer */
+.mobile-drawer-aurapay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(5, 7, 11, 0.98);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--space-6) + env(safe-area-inset-top, 0px)) var(--space-6) calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-drawer-aurapay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mobile-drawer-aurapay-links {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-6) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.mobile-drawer-aurapay-links a {
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: block;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.mobile-drawer-aurapay-links a:hover {
+  color: var(--gold-primary);
+  transform: translateX(6px);
+}
+
+/* -----------------------------
+   Asymmetric Private Wealth Footer
+   ----------------------------- */
+.footer-editorial-aurapay {
+  background: #040508;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: clamp(60px, 8vw, 90px) 0 var(--space-6);
+  position: relative;
+}
+
+.footer-market-ticker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 14px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gold-primary);
+}
+
+.card-3d-scene {
+  perspective: 1200px;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.metal-card-flipper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.586;
+  transform-style: preserve-3d;
+  transition: transform 0.6s var(--ease-spring);
+}
+
+.metal-card-flipper.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.metal-card-container {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #181F2C 0%, #080A0F 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 0 40px rgba(139, 92, 246, 0.15);
+  padding: clamp(var(--space-4), 4vw, var(--space-6));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transition: background 0.5s var(--ease-smooth), border-color 0.5s var(--ease-smooth);
+  cursor: grab;
+}
+
+.card-layer-content {
+  position: relative;
+  z-index: 2;
+}
+
+.card-holder-name {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-sub-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.metal-card-back {
+  transform: rotateY(180deg);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-mag-stripe {
+  width: 100%;
+  height: clamp(32px, 8vw, 42px);
+  background: #0A0C10;
+  margin-top: var(--space-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-signature-band {
+  background: #E2E8F0;
+  height: 32px;
+  border-radius: 4px;
+  margin-inline: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-inline: var(--space-3);
+}
+
+.card-cvv-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: bold;
+  color: #000;
+  font-size: 0.9rem;
+}
+
+.metal-card-container.material-gold {
+  background: linear-gradient(145deg, #423512 0%, #171205 100%);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 0 40px rgba(212, 175, 55, 0.3);
+}
+
+.metal-card-container.material-platinum {
+  background: linear-gradient(145deg, #334155 0%, #0F172A 100%);
+  border-color: rgba(226, 232, 240, 0.5);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 0 40px rgba(148, 163, 184, 0.25);
+}
+
+.metal-card-container.material-titanium {
+  background: linear-gradient(145deg, #1E293B 0%, #090D16 100%);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 0 40px rgba(99, 102, 241, 0.25);
+}
+
+.card-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+  opacity: 0.6;
+}
+
+.chip-smart {
+  width: 45px;
+  height: 35px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ECC94B, #D69E2E);
+}
+
+.card-number-display {
+  font-family: 'Space Grotesk', monospace;
+  font-size: clamp(1rem, 3.5vw, 1.35rem);
+  letter-spacing: 0.15em;
+  color: #fff;
+}
+
+.gold-btn {
+  background: var(--gold-gradient);
+  color: #000;
+  font-weight: 700;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-pill);
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: all 0.25s var(--ease-smooth);
+  cursor: pointer;
+}
+
+.gold-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(246, 211, 101, 0.45);
+  color: #000;
+}
+
+.form-control, .form-select {
+  font-size: 1rem;
+  min-height: 44px;
+}
+
+.material-pill-btn {
+  min-height: 38px;
+  padding-inline: 14px;
+}
+
+@media (max-width: 576px) {
+  .navbar-aurapay {
+    width: 95%;
+    padding: var(--space-2) var(--space-4);
+  }
+}
